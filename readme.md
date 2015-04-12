@@ -4,7 +4,7 @@ A modular marionette.js application for demonstration purposes.
 
 More documentation to come...
 
-# stack
+## stack
 
 * editorconfig
 * jshint
