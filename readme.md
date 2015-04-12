@@ -7,6 +7,10 @@ More documentation to come...
 # stack
 
 * editorconfig
-* JSCS
+* jshint
+* jscs
 * npm
 * gulp
+* browserify
+* precommit-hooks
+
