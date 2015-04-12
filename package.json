@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "gulp": "^3.8.11",
+    "gulp-changed": "^1.2.1",
     "gulp-concat": "^2.5.2",
     "normalize.css": "^3.0.3"
   }

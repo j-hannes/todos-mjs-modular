@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var changed = require('gulp-changed');
 
 gulp.task('build', ['html', 'css', 'images']);
 gulp.task('dev', ['build', 'watch']);
@@ -19,6 +20,7 @@ gulp.task('css', function() {
 
 gulp.task('images', function() {
   gulp.src('./assets/images/*')
+    .pipe(changed('./dist/img'))
     .pipe(gulp.dest('./dist/img'));
 });
 
