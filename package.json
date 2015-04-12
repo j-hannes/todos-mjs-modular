@@ -1,0 +1,14 @@
+{
+  "name": "todos-mjs-modular",
+  "version": "0.1.0",
+  "description": "a modular marionette application",
+  "main": "gulpfile.js",
+  "repository": "git@github.com:j-hannes/todos-mjs-modular",
+  "author": "j-hannes",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "normalize.css": "^3.0.3"
+  }
+}

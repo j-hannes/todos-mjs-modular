@@ -1,0 +1,37 @@
+html {
+  height: 100%;
+}
+
+body {
+  background: url('../img/porto-sunset.jpg');
+  background-repeat: no-repeat;
+  background-position: 25% center;
+  background-size: cover;
+  height: 100%;
+}
+
+.input-element {
+  height: 40px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  background: #fff;
+  background: rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.input-field {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 23px;
+}
