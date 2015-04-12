@@ -70,6 +70,7 @@
     // added rules
 
     "excludeFiles": [
-      "node_modules/**"
+      "node_modules/**",
+      "dist/js/bundle.js"
     ]
 }
