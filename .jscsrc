@@ -65,5 +65,11 @@
     "safeContextKeyword": "_this",
     "validateLineBreaks": "LF",
     "validateQuoteMarks": "'",
-    "validateIndentation": 2
+    "validateIndentation": 2,
+
+    // added rules
+
+    "excludeFiles": [
+      "node_modules/**"
+    ]
 }
