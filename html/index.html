@@ -7,15 +7,18 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <form>
-      <div id="todo-input-element" class="input-element">
-        <div class="input-container">
-          <input type="text" id="new-todo" class="input-field"
-                 placeholder="What would you like to do?"
-                 autocomplete="off">
-        </div>
-     </div>
-    </form>
+    <script type="text/html" id="todo-input-template">
+      <form>
+        <div id="todo-input-element" class="input-element">
+          <div class="input-container">
+            <input type="text" id="new-todo" class="input-field"
+                   placeholder="What would you like to do?"
+                   autocomplete="off">
+          </div>
+       </div>
+      </form>
+    </script>
+
     <script src="js/bundle.js"></script>
   </body>
 </html>
