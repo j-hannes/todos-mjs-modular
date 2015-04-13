@@ -54,7 +54,7 @@ gulp.task('watch', function() {
 
 var customOpts = {
   entries: ['./client/main.js'],
-  debug: true
+  debug: true,
 };
 var opts = assign({}, watchify.args, customOpts);
 var b = browserify(opts);
@@ -77,7 +77,7 @@ w.on('log', gutil.log);
 
 gulp.task('browserify', function() {
   var b = browserify({
-    entries: ['./client/main.js']
+    entries: ['./client/main.js'],
   });
 
   return b.bundle()
