@@ -69,6 +69,10 @@
 
     // added rules
 
+    "requireTrailingComma": {
+      "ignoreSingleLine": true
+    },
+
     "excludeFiles": [
       "node_modules/**",
       "dist/js/bundle.js"
