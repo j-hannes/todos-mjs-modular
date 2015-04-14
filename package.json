@@ -43,6 +43,6 @@
     "jshint",
     "jscs",
     "csslint",
-    "npm run test-unit"
+    "test-unit"
   ]
 }
