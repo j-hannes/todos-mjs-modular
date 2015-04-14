@@ -1,5 +1,5 @@
-var Backbone = require('backbone');
-Backbone.$ = require('jquery');
+var Backbone = require('backbone')
+Backbone.$ = require('jquery')
 
-var Radio = require('backbone.radio');
-Radio.DEBUG = true;
+var Radio = require('backbone.radio')
+Radio.DEBUG = true

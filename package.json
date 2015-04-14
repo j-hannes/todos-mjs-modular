@@ -7,6 +7,8 @@
   "author": "j-hannes",
   "license": "MIT",
   "scripts": {
+    "prepush": "npm test",
+    "test": "pioneer",
     "jshint": "jshint .",
     "jscs": "jscs .",
     "csslint": "csslint --ignore=box-sizing,bulletproof-font-face fonts css"
@@ -30,6 +32,7 @@
   },
   "devDependencies": {
     "gulp-connect": "^2.2.0",
+    "husky": "^0.7.0",
     "pioneer": "^0.11.2",
     "precommit-hook": "^2.0.1"
   },

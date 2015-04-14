@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * This module is a wrapper around ramda.js to expose its functions to
@@ -22,8 +22,8 @@ r.expose = function(env) {
 /**
  * Add some commonly used haskell functions.
  */
-r.words = r.split(' ');
-r.lines = r.split('\n');
+r.words = r.split(' ')
+r.lines = r.split('\n')
 
 // export the extended ramda library
 module.exports = r

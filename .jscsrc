@@ -69,6 +69,7 @@
 
     // added rules
 
+    "disallowSemicolons": true,
     "requireTrailingComma": {
       "ignoreSingleLine": true
     },
