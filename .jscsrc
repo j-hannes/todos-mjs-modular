@@ -61,7 +61,7 @@
     "requirePaddingNewLinesBeforeLineComments": {
         "allExcept": "firstAfterCurly"
     },
-    "requirePaddingNewLinesAfterBlocks": true,
+    // "requirePaddingNewLinesAfterBlocks": true,
     "safeContextKeyword": "_this",
     "validateLineBreaks": "LF",
     "validateQuoteMarks": "'",
