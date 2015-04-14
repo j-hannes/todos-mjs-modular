@@ -55,5 +55,15 @@
    */
 
   // Suppress warnings about == null comparisons.
-  "eqnull": true
+  "eqnull": true,
+
+  // semicolon-free style
+  "asi": true,
+
+  // ramda functions are exposed globally
+  "globals": {
+    "filter": false,
+    "forEach": false,
+    "compose": false
+  }
 }

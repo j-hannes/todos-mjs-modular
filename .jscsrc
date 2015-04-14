@@ -27,7 +27,7 @@
     // "disallowTrailingComma": true,
     "disallowYodaConditions": true,
     "disallowKeywords": [ "with" ],
-    "disallowMultipleLineBreaks": true,
+    // "disallowMultipleLineBreaks": true,
     "disallowMultipleVarDecl": true,
     "requireSpaceBeforeBlockStatements": true,
     "requireParenthesesAroundIIFE": true,

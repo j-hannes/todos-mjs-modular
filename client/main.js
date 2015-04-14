@@ -1,6 +1,12 @@
-require('./plugins');
+// set up environment
+require('./plugins')
 
-var Application = require('./app');
+// initialize application
+var Application = require('./app')
+var app = new Application()
 
-var app = new Application();
-app.start();
+// load modules (self registering)
+require('./modules/add-todo')
+
+// start application
+app.start()
