@@ -10,7 +10,7 @@
     "prepush": "npm run test-integration",
     "test": "npm run test-integration && npm run test-unit",
     "test-integration": "pioneer",
-    "test-unit": "mocha client/**/*-test.js",
+    "test-unit": "mocha client/**/*.test.js",
     "jshint": "jshint .",
     "jscs": "jscs .",
     "csslint": "csslint --ignore=box-sizing,bulletproof-font-face fonts css"
