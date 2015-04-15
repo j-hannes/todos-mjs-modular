@@ -57,6 +57,13 @@
   // Suppress warnings about == null comparisons.
   "eqnull": true,
 
+  /*
+   * CUSTOMIZATIONS
+   * ==============
+   */
+
+  "mocha": true,
+
   // semicolon-free style
   "asi": true,
 
