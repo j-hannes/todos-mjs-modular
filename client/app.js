@@ -11,15 +11,15 @@ var AppLayoutView = require('./views/app-layout-view')
 var appChannel = require('backbone.radio').channel('app')
 
 
-// lib
+// ####################
+// ### private area ###
+// ####################
+
+var modules = {}
+
 var startModule = function(module) {module.module.start()}
 var isAutostart = function(module) {return module.isAutostart}
 
-
-// local data
-var modules = {}
-
-// private functions
 var startAutostartModules = compose(forEach(startModule), filter(isAutostart))
 
 var registerModule = function(options) {
@@ -40,7 +40,10 @@ var startRegisteredModules = function() {
 }
 
 
-// API (exposed functions)
+// ###########
+// ### API ###
+// ###########
+
 module.exports = Marionette.Application.extend({
   layoutView: new AppLayoutView(),
 

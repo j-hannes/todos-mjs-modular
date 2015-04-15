@@ -10,29 +10,35 @@ var layoutChannel = require('backbone.radio').channel('layout')
 // components
 var TodoInputView = require('./views/todo-input-view')
 
-// private functions
+
+// ####################
+// ### private area ###
+// ####################
+
 var renderedTodoInputView = function() {
   var view = new TodoInputView()
   view.render()
   return view
 }
 
-// API (exposed functions)
-var AddTodoModule = Marionette.Object.extend({
 
-  initialize: function() {
-    this.view = renderedTodoInputView()
+// ###########
+// ### API ###
+// ###########
+
+var AddTodoModule = Marionette.Object.extend({
+  register: function(key) {
+    appChannel.command('register:module', {
+      name: key,
+      ModuleClass: AddTodoModule,
+    })
   },
 
   start: function() {
-    layoutChannel.command('show:header', this.view)
+    var view = renderedTodoInputView()
+    layoutChannel.command('show:header', view)
   },
 })
 
-// register module at application
-appChannel.command('register:module', {
-  name: 'add-todo',
-  ModuleClass: AddTodoModule,
-})
-
-module.exports = AddTodoModule
+// export as singleton
+module.exports = new AddTodoModule()

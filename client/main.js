@@ -5,8 +5,8 @@ require('./plugins')
 var Application = require('./app')
 var app = new Application()
 
-// load modules (self registering)
-require('./modules/add-todo')
+// load modules
+require('./modules/add-todo').register('add-todo')
 
 // start application
 app.start()
