@@ -44,7 +44,10 @@ module.exports = Marionette.ItemView.extend({
   },
 
   initialize: function() {
-    cacheDomSelectors(this)
     registerRadioListeners()
+  },
+
+  onRender: function() {
+    cacheDomSelectors(this)
   },
 })
