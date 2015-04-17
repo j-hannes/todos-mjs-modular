@@ -15,29 +15,25 @@ var appChannel = require('backbone.radio').channel('app')
 // ### private area ###
 // ####################
 
-var modules = {}
-
-var startModule = function(module) {module.module.start()}
-var isAutostart = function(module) {return module.isAutostart}
-
-var startAutostartModules = compose(forEach(startModule), filter(isAutostart))
+var modules = []
 
 var registerModule = function(options) {
   var module = new options.ModuleClass()
-  modules[options.name] = {
+  modules.push({
+    name: options.name,
     module: module,
-    ptions: options.options,
-  }
-  module.start()
+    moduleOptions: options.options,
+  })
 }
 
 var registerCommands = function() {
   appChannel.comply('register:module', registerModule)
 }
 
-var startRegisteredModules = function() {
-  startAutostartModules(modules)
-}
+var startModule = function(module) {module.module.start()}
+var isAutostart = function(module) {return module.moduleOptions.autostart}
+
+var startAutostartModules = compose(forEach(startModule), filter(isAutostart))
 
 
 // ###########
@@ -52,6 +48,6 @@ module.exports = Marionette.Application.extend({
   },
 
   onStart: function() {
-    startRegisteredModules()
+    startAutostartModules(modules)
   },
 })

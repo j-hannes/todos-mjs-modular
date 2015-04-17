@@ -31,6 +31,9 @@ var AddTodoModule = Marionette.Object.extend({
     appChannel.command('register:module', {
       name: key,
       ModuleClass: AddTodoModule,
+      options: {
+        autostart: true,
+      },
     })
   },
 
