@@ -62,7 +62,11 @@
    * ==============
    */
 
+  // we have tests next to almost every file
   "mocha": true,
+
+  // surpress warning about mocha constructions
+  "expr": true,
 
   // semicolon-free style
   "asi": true,
