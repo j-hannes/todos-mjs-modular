@@ -19,6 +19,10 @@ Module.prototype.start = function() {}
 
 
 describe('Application', function() {
+  before(function() {
+    appChannel.stopComplying('')
+  })
+
   it('should start a registered autostart module', function() {
     // set up
     var module = new Module()
