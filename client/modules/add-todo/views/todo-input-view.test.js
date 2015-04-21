@@ -14,12 +14,16 @@ describe('TodoInputView', function() {
 
   it('fires create:todo command on submit event', function(done) {
 
-    var view = new TodoInputView()
+    this.view = new TodoInputView()
 
     appChannel.comply('create:todo', function() {
       done()
     })
 
-    view.$el.trigger('submit')
+    this.view.$el.trigger('submit')
+  })
+
+  after(function() {
+    this.view.destroy()
   })
 })

@@ -57,4 +57,8 @@ module.exports = Marionette.ItemView.extend({
   onRender: function() {
     cacheDomSelectors(this)
   },
+
+  onDestroy: function() {
+    appChannel.off('todo:created', emptyTodoInputField)
+  },
 })
