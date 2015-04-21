@@ -6,16 +6,6 @@
   "repository": "git@github.com:j-hannes/todos-mjs-modular",
   "author": "j-hannes",
   "license": "MIT",
-  "scripts": {
-    "prepush": "npm run test-integration",
-    "test": "npm run test-integration && npm run test-unit",
-    "test-integration": "pioneer",
-    "test-unit": "./node_modules/.bin/mocha --require mocha-clean client/**/*.test.js",
-    "test-watch": "./node_modules/.bin/mocha --reporter min --watch --require mocha-clean client/**/*.test.js",
-    "jshint": "jshint .",
-    "jscs": "jscs .",
-    "csslint": "csslint --ignore=box-sizing,bulletproof-font-face fonts css"
-  },
   "dependencies": {
     "backbone": "^1.1.2",
     "backbone.marionette": "^2.4.1",
@@ -48,5 +38,19 @@
     "jscs",
     "csslint",
     "test-unit"
-  ]
+  ],
+  "scripts": {
+    "blanket": {
+      "pattern": "src",
+      "data-cover-never": "node_modules"
+    },
+    "prepush": "npm run test-integration",
+    "test": "npm run test-integration && npm run test-unit",
+    "test-integration": "pioneer",
+    "test-unit": "./node_modules/.bin/mocha --require mocha-clean client/**/*.test.js",
+    "test-watch": "./node_modules/.bin/mocha --reporter min --watch --require mocha-clean client/**/*.test.js",
+    "jshint": "jshint .",
+    "jscs": "jscs .",
+    "csslint": "csslint --ignore=box-sizing,bulletproof-font-face fonts css"
+  }
 }
