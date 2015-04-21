@@ -15,7 +15,14 @@ var $todoInputField
 
 var handleFormSubmit = function(e) {
   e.preventDefault()
-  appChannel.command('create:todo', $todoInputField.val())
+
+  // good or not?
+  var todoTitle = $todoInputField &&
+                  typeof $todoInputField.val === 'function' &&
+                  $todoInputField.val() ||
+                  ''
+
+  appChannel.command('create:todo', todoTitle)
 }
 
 var cacheDomSelectors = function(view) {
