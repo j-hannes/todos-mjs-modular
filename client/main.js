@@ -7,6 +7,7 @@ var app = new Application()
 
 // load modules
 require('./modules/add-todo').register('add-todo')
+require('./modules/notifier').register('notifier')
 
 // start application
 app.start()
