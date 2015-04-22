@@ -12,7 +12,7 @@ module.exports = Backbone.Collection.extend({
     this.listenTo(this, 'add', this.notifyItemAdded)
   },
 
-  notifyItemAdded: function() {
-    appChannel.trigger('todo:created')
+  notifyItemAdded: function(todo) {
+    appChannel.trigger('todo:created', todo)
   },
 })
