@@ -13,15 +13,17 @@ var appChannel = require('backbone.radio').channel('app')
 
 var $todoInputField
 
+var getInputValue = function() {
+  if ($todoInputField && typeof $todoInputField.val === 'function') {
+    return $todoInputField.val()
+  } else {
+    return ''
+  }
+}
+
 var handleFormSubmit = function(e) {
   e.preventDefault()
-
-  // good or not?
-  var todoTitle = $todoInputField &&
-                  typeof $todoInputField.val === 'function' &&
-                  $todoInputField.val() ||
-                  ''
-
+  var todoTitle = getInputValue()
   appChannel.command('create:todo', todoTitle)
 }
 
