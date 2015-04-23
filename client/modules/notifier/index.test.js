@@ -4,15 +4,18 @@
 require('../../test-env')
 
 // libraries
-var expect = require('chai').expect
+var chai = require('chai')
+var expect = chai.expect
+chai.should()
 
 // channels
 var appChannel = require('backbone.radio').channel('app')
 
 // modules
-var addTodoModule = require('./')
+var notifierModule = require('./')
 
-describe('AddTodoModule', function() {
+describe('NotifierModule', function() {
+
   describe('register', function() {
     before(function() {
       appChannel.stopComplying('')
@@ -22,7 +25,7 @@ describe('AddTodoModule', function() {
       appChannel.complyOnce('register:module', function() {
         done()
       })
-      addTodoModule.register()
+      notifierModule.register()
     })
 
     it('should register module with key passed', function(done) {
@@ -33,7 +36,7 @@ describe('AddTodoModule', function() {
         done()
       })
 
-      addTodoModule.register(key)
+      notifierModule.register(key)
     })
   })
 })
