@@ -1,0 +1,3 @@
+describe('Todo :: Model', function() {
+
+})
