@@ -17,7 +17,7 @@ var appChannel = require('backbone.radio').channel('app')
 
 var modules = []
 
-var todos = require('./entities/todos')
+var todoEntity = require('./entities/todo')
 
 var registerModule = function(options) {
   var module = new options.ModuleClass()
@@ -29,7 +29,7 @@ var registerModule = function(options) {
 }
 
 var createTodo = function(title) {
-  todos.addTodo(title)
+  todoEntity.addTodo(title)
 }
 
 var registerCommands = function() {
