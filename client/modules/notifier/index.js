@@ -1,11 +1,10 @@
 'use strict'
 
-// libraries
-var Marionette = require('backbone.marionette')
-
 // channels
 var appChannel = require('backbone.radio').channel('app')
 
+// components
+var Module = require('../../common/module')
 
 // ####################
 // ### private area ###
@@ -20,15 +19,9 @@ var logTodos = function(todo) {
 // ### API ###
 // ###########
 
-var NotifierModule = Marionette.Object.extend({
-  register: function(key) {
-    appChannel.command('register:module', {
-      name: key,
-      ModuleClass: NotifierModule,
-      options: {
-        autostart: true,
-      },
-    })
+var NotifierModule = Module.extend({
+  initialize: function() {
+    this.moduleClass = NotifierModule
   },
 
   start: function() {

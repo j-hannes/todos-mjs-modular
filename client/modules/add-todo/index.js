@@ -1,13 +1,10 @@
 'use strict'
 
-// libraries
-var Marionette = require('backbone.marionette')
-
 // channels
-var appChannel = require('backbone.radio').channel('app')
 var layoutChannel = require('backbone.radio').channel('layout')
 
 // components
+var Module = require('../../common/module')
 var TodoInputView = require('./views/todo-input-view')
 
 
@@ -26,15 +23,9 @@ var renderedTodoInputView = function() {
 // ### API ###
 // ###########
 
-var AddTodoModule = Marionette.Object.extend({
-  register: function(key) {
-    appChannel.command('register:module', {
-      name: key,
-      ModuleClass: AddTodoModule,
-      options: {
-        autostart: true,
-      },
-    })
+var AddTodoModule = Module.extend({
+  initialize: function() {
+    this.moduleClass = AddTodoModule
   },
 
   start: function() {
