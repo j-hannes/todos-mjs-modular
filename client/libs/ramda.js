@@ -25,5 +25,13 @@ r.expose = function(env) {
 r.words = r.split(' ')
 r.lines = r.split('\n')
 
-// export the extended ramda library
+/**
+ * Rename functions that have a different name in Haskell.
+ */
+if (typeof r.elem === 'undefined') {
+  r.elem = r.contains
+  delete r.contains
+}
+
+// export the modified ramda library
 module.exports = r

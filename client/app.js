@@ -1,60 +1,56 @@
+/* global compose, elem, filter, map */
 'use strict'
 
 // libraries
 var Marionette = require('backbone.marionette')
 require('./libs/ramda').expose(global)
 
-// components
+// data components
+require('./data/todo')
+
+// view components
 var AppLayoutView = require('./views/app-layout-view')
 
 // channels
-var appChannel = require('backbone.radio').channel('app')
+var radio = require('backbone.radio')
+var appChannel = radio.channel('app')
 
 
-// ####################
-// ### private area ###
-// ####################
+// ###############
+// ### private ###
+// ###############
 
 var modules = []
 
-var todoEntity = require('./entities/todo')
-
-var registerModule = function(options) {
-  var module = new options.ModuleClass()
-  modules.push({
-    name: options.name,
-    module: module,
-    moduleOptions: options.options,
-  })
+var registerModule = function(module) {
+  if (elem(module, modules)) {
+    throw new Error('Module already registered.')
+  } else {
+    modules.push(module)
+  }
 }
 
-var createTodo = function(title) {
-  todoEntity.addTodo(title)
-}
+var start = function(module) {module.start()}
+var autostart = function(module) {return module.autostart}
 
-var registerCommands = function() {
-  appChannel.comply('register:module', registerModule)
-  appChannel.comply('create:todo', createTodo)
-}
-
-var startModule = function(module) {module.module.start()}
-var isAutostart = function(module) {return module.moduleOptions.autostart}
-
-var startAutostartModules = compose(forEach(startModule), filter(isAutostart))
+var startAutostartModules = compose(map(start), filter(autostart))
 
 
-// ###########
-// ### API ###
-// ###########
+// ##############
+// ### public ###
+// ##############
 
-module.exports = Marionette.Application.extend({
+var Application = Marionette.Application.extend({
   layoutView: new AppLayoutView(),
 
   initialize: function() {
-    registerCommands()
+    appChannel.comply('module:register', registerModule)
   },
 
   onStart: function() {
     startAutostartModules(modules)
   },
 })
+
+// exported as singleton
+module.exports = new Application()

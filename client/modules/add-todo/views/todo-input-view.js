@@ -4,7 +4,7 @@
 var Marionette = require('backbone.marionette')
 
 // channels
-var appChannel = require('backbone.radio').channel('app')
+var dataChannel = require('backbone.radio').channel('app')
 
 
 // ####################
@@ -24,7 +24,7 @@ var getInputValue = function() {
 var handleFormSubmit = function(e) {
   e.preventDefault()
   var todoTitle = getInputValue()
-  appChannel.command('create:todo', todoTitle)
+  dataChannel.command('create:todo', todoTitle)
 }
 
 var cacheDomSelectors = function(view) {
@@ -36,7 +36,7 @@ var emptyTodoInputField = function() {
 }
 
 var registerRadioListeners = function() {
-  appChannel.on('todo:created', emptyTodoInputField)
+  dataChannel.on('todo:created', emptyTodoInputField)
 }
 
 
@@ -61,6 +61,6 @@ module.exports = Marionette.ItemView.extend({
   },
 
   onDestroy: function() {
-    appChannel.off('todo:created', emptyTodoInputField)
+    dataChannel.off('todo:created', emptyTodoInputField)
   },
 })

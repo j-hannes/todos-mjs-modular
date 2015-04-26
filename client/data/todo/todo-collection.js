@@ -3,7 +3,7 @@
 var Backbone = require('backbone')
 var TodoModel = require('./todo-model')
 
-var appChannel = require('backbone.radio').channel('app')
+var dataChannel = require('backbone.radio').channel('app')
 
 
 // ####################
@@ -12,7 +12,7 @@ var appChannel = require('backbone.radio').channel('app')
 
 //+ nodifyItemAdded :: TodoModel -> AppEvent (TodoModel)
 var notifyItemAdded = function(todo) {
-  appChannel.trigger('todo:created', todo)
+  dataChannel.trigger('todo:created', todo)
 }
 
 
