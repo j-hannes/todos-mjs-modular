@@ -9,6 +9,7 @@ var uglify     = require('gulp-uglify')
 var gutil      = require('gulp-util')
 var sourcemaps = require('gulp-sourcemaps')
 var mocha      = require('gulp-mocha')
+var istanbul   = require('gulp-istanbul')
 var clean      = require('gulp-clean')
 
 // browserify specific modules
@@ -97,9 +98,24 @@ gulp.task('browserify', function() {
 })
 
 gulp.task('mocha', function() {
-  return gulp.src(['client/*.test.js'], { read: false })
-    .pipe(mocha({ reporter: 'min' }))
+  return gulp.src([
+      'client/**/*.js',
+      '!client/**/*.test.js',
+      '!client/test-env.js',
+    ])
+    .pipe(istanbul({
+      includeUntested: true,
+    }))
+    .pipe(istanbul.hookRequire())
     .on('error', gutil.log)
+    .on('finish', function() {
+      gulp.src(['client/**/*.test.js'], { read: false })
+      .pipe(mocha({ reporter: 'min' }))
+      .on('error', gutil.log)
+      .pipe(istanbul.writeReports({
+        reporters: ['html', 'text-summary'],
+      }))
+    })
 })
 
 gulp.task('watch-mocha', function() {
