@@ -8,6 +8,7 @@ var connect    = require('gulp-connect')
 var uglify     = require('gulp-uglify')
 var gutil      = require('gulp-util')
 var sourcemaps = require('gulp-sourcemaps')
+var clean      = require('gulp-clean')
 
 // browserify specific modules
 var watchify   = require('watchify')
@@ -92,4 +93,9 @@ gulp.task('browserify', function() {
     .pipe(buffer())
         .pipe(uglify())
     .pipe(gulp.dest('./dist/js/'))
+})
+
+gulp.task('clean', function() {
+  return gulp.src('coverage', {read: false})
+    .pipe(clean())
 })
