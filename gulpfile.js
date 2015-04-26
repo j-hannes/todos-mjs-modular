@@ -8,6 +8,7 @@ var connect    = require('gulp-connect')
 var uglify     = require('gulp-uglify')
 var gutil      = require('gulp-util')
 var sourcemaps = require('gulp-sourcemaps')
+var mocha      = require('gulp-mocha')
 var clean      = require('gulp-clean')
 
 // browserify specific modules
@@ -93,6 +94,16 @@ gulp.task('browserify', function() {
     .pipe(buffer())
         .pipe(uglify())
     .pipe(gulp.dest('./dist/js/'))
+})
+
+gulp.task('mocha', function() {
+  return gulp.src(['client/*.test.js'], { read: false })
+    .pipe(mocha({ reporter: 'min' }))
+    .on('error', gutil.log)
+})
+
+gulp.task('watch-mocha', function() {
+  gulp.watch(['client/**'], ['mocha'])
 })
 
 gulp.task('clean', function() {
