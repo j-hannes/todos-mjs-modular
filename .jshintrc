@@ -69,12 +69,5 @@
   "expr": true,
 
   // semicolon-free style
-  "asi": true,
-
-  // ramda functions are exposed globally
-  "globals": {
-    "filter": false,
-    "forEach": false,
-    "compose": false
-  }
+  "asi": true
 }
