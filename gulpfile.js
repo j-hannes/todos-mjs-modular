@@ -102,6 +102,8 @@ gulp.task('mocha', function() {
       'client/**/*.js',
       '!client/**/*.test.js',
       '!client/test-env.js',
+      '!client/main.js',
+      '!client/plugins.js',
     ])
     .pipe(istanbul({
       includeUntested: true,
