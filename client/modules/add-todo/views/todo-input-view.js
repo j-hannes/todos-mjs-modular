@@ -4,7 +4,7 @@
 var Marionette = require('backbone.marionette')
 
 // channels
-var dataChannel = require('backbone.radio').channel('app')
+var dataChannel = require('backbone.radio').channel('data')
 
 
 // ####################
@@ -24,7 +24,7 @@ var getInputValue = function() {
 var handleFormSubmit = function(e) {
   e.preventDefault()
   var todoTitle = getInputValue()
-  dataChannel.command('create:todo', todoTitle)
+  dataChannel.command('todos:add', todoTitle)
 }
 
 var cacheDomSelectors = function(view) {

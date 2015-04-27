@@ -1,7 +1,7 @@
 'use strict'
 
 // channels
-var appChannel = require('backbone.radio').channel('app')
+var dataChannel = require('backbone.radio').channel('data')
 
 // components
 var Module = require('../../common/module')
@@ -20,12 +20,14 @@ var logTodos = function(todo) {
 // ###########
 
 var NotifierModule = Module.extend({
+  autostart: true,
+
   initialize: function() {
     this.moduleClass = NotifierModule
   },
 
   start: function() {
-    appChannel.on('todo:created', logTodos)
+    dataChannel.on('todo:created', logTodos)
   },
 })
 
