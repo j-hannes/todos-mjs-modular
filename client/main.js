@@ -5,8 +5,8 @@ require('./plugins')
 var app = require('./app')
 
 // load modules
-require('./modules/add-todo').register('add-todo')
-require('./modules/notifier').register('notifier')
+require('./modules/add-todo').register()
+require('./modules/notifier').register()
 
 // start application
 app.start()
