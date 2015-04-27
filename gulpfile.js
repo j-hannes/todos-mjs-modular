@@ -8,9 +8,9 @@ var connect    = require('gulp-connect')
 var uglify     = require('gulp-uglify')
 var gutil      = require('gulp-util')
 var sourcemaps = require('gulp-sourcemaps')
-var mocha      = require('gulp-mocha')
-var istanbul   = require('gulp-istanbul')
+var mocha      = require('gulp-spawn-mocha')
 var clean      = require('gulp-clean')
+var plumber    = require('gulp-plumber')
 
 // browserify specific modules
 var watchify   = require('watchify')
@@ -98,29 +98,17 @@ gulp.task('browserify', function() {
 })
 
 gulp.task('mocha', function() {
-  return gulp.src([
-      'client/**/*.js',
-      '!client/**/*.test.js',
-      '!client/test-env.js',
-      '!client/main.js',
-      '!client/plugins.js',
-    ])
-    .pipe(istanbul({
-      includeUntested: true,
-    }))
-    .pipe(istanbul.hookRequire())
+  gulp.src(['client/**/*.test.js'])
     .on('error', gutil.log)
-    .on('finish', function() {
-      gulp.src(['client/**/*.test.js'], { read: false })
-      .pipe(mocha({ reporter: 'min' }))
-      .on('error', gutil.log)
-      .pipe(istanbul.writeReports({
-        reporters: ['html', 'text-summary'],
-      }))
-    })
+    .pipe(plumber())
+    .pipe(mocha({
+      reporter: 'min',
+      require: 'mocha-clean/brief',
+      istanbul: true,
+    }))
 })
 
-gulp.task('watch-mocha', function() {
+gulp.task('TDD', function() {
   gulp.watch(['client/**'], ['mocha'])
 })
 

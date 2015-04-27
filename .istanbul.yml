@@ -1,0 +1,13 @@
+reporting:
+    print: none
+    reports:
+      - lcov
+      - text-summary
+
+instrumentation:
+    root: ./client
+    include-all-sources: true
+    excludes:
+      - main.js
+      - plugins.js
+
