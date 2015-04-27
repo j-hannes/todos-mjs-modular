@@ -26,10 +26,6 @@ var renderedTodoInputView = function() {
 var AddTodoModule = Module.extend({
   autostart: true,
 
-  initialize: function() {
-    this.moduleClass = AddTodoModule
-  },
-
   start: function() {
     var view = renderedTodoInputView()
     layoutChannel.command('show:header', view)

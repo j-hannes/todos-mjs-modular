@@ -22,10 +22,6 @@ var logTodos = function(todo) {
 var NotifierModule = Module.extend({
   autostart: true,
 
-  initialize: function() {
-    this.moduleClass = NotifierModule
-  },
-
   start: function() {
     dataChannel.on('todo:created', logTodos)
   },
