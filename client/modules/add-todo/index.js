@@ -24,6 +24,8 @@ var renderedTodoInputView = function() {
 // ###########
 
 var AddTodoModule = Module.extend({
+  autostart: true,
+
   initialize: function() {
     this.moduleClass = AddTodoModule
   },
