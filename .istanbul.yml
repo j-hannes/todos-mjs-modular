@@ -10,4 +10,5 @@ instrumentation:
     excludes:
       - main.js
       - plugins.js
+      - ramda.js
 
