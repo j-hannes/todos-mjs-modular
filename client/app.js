@@ -1,9 +1,8 @@
-/* global compose, elem, filter, map */
 'use strict'
 
 // libraries
 var Marionette = require('backbone.marionette')
-require('./libs/ramda').expose(global)
+var λ = require('./libs/ramda')
 
 // data components
 require('./data/todo')
@@ -23,7 +22,7 @@ var appChannel = radio.channel('app')
 var modules = []
 
 var registerModule = function(module) {
-  if (elem(module, modules)) {
+  if (λ.elem(module, modules)) {
     throw new Error('Module already registered.')
   } else {
     modules.push(module)
@@ -33,7 +32,7 @@ var registerModule = function(module) {
 var start = function(module) {module.start()}
 var autostart = function(module) {return module.autostart}
 
-var startAutostartModules = compose(map(start), filter(autostart))
+var startAutostartModules = λ.compose(λ.map(start), λ.filter(autostart))
 
 
 // ##############

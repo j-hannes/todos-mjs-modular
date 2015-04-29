@@ -1,11 +1,12 @@
-var Backbone = require('backbone')
-var jsdom = require('jsdom')
-Backbone.$ = require('jquery')(jsdom.jsdom().parentWindow)
+require('./plugins')
 
-var Radio = require('backbone.radio')
-Radio.DEBUG = true
+var jsdom = require('mocha-jsdom')
+jsdom({
+  url: 'http://localhost:8080',
+  html: undefined,
+})
 
-if (!global.haskellFlavouredJS) {
-  require('./libs/ramda').expose(global)
-  global.haskellFlavouredJS = true
-}
+var chai = require('chai')
+var sinonChai = require('sinon-chai')
+chai.should()
+chai.use(sinonChai)

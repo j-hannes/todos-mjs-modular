@@ -1,22 +1,16 @@
 'use strict'
 
-// set up test environment
 require('./test-env')
 
-// import testing libraries
-var chai = require('chai')
 var sinon = require('sinon')
-var sinonChai = require('sinon-chai')
-
-// configure assertion library
-chai.should()
-chai.use(sinonChai)
-
-// import components
-var app = require('./app')
-
-// import channels
+var Backbone = require('backbone')
 var appChannel = require('backbone.radio').channel('app')
+var jsdom = require('jsdom').jsdom
+
+// we have to do this for some reason because Marionette doesn't seem to like
+// the jsdom-mocha config loaded from test-env
+Backbone.$ = require('jquery')(jsdom().parentWindow)
+var app = require('./app')
 
 // run tests
 describe('app', function() {
@@ -25,7 +19,6 @@ describe('app', function() {
   })
 
   it('should start registered autostart modules on start', function() {
-    // set up
     var start = sinon.spy()
 
     var Module = function() {

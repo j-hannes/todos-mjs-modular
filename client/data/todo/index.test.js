@@ -1,5 +1,10 @@
-/* global pluck */
 'use strict'
+
+require('../../test-env')
+
+require('./')
+
+var λ = require('../../libs/ramda')
 
 var dataChannel = require('backbone.radio').channel('data')
 
@@ -9,7 +14,7 @@ describe('Todos :: Entity', function() {
     dataChannel.command('todos:add', todo)
 
     var todos = dataChannel.request('todos:list')
-    var titles = pluck('title', todos)
+    var titles = λ.pluck('title', todos)
     titles.should.contain('Prepare trip to Spain')
   })
 

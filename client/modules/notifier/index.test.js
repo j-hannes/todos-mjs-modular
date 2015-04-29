@@ -1,12 +1,11 @@
 'use strict'
 
+require('../../test-env')
+
 var Backbone = require('backbone')
-
-var notifier = require('./')
-
-var dataChannel = require('backbone.radio').channel('data')
-
 var sinon = require('sinon')
+var notifier = require('./')
+var dataChannel = require('backbone.radio').channel('data')
 
 describe('notifier :: Module', function() {
   it('reacts to "todo:created" on dataChannel', function() {

@@ -1,18 +1,8 @@
 'use strict'
 
-// set up test environment
 require('../test-env')
 
-// import testing libraries
-var chai = require('chai')
-
-// configure assertion library
-chai.should()
-
-// import components
 var Module = require('./module')
-
-// import channels
 var appChannel = require('backbone.radio').channel('app')
 
 describe('Module', function() {
