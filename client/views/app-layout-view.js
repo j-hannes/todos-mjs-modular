@@ -15,6 +15,7 @@ module.exports = Marionette.LayoutView.extend({
   },
 
   registerCommands: function() {
+    // layoutChannel.stopComplying('show:header')
     layoutChannel.comply('show:header', function(view) {
       this.header.show(view)
     }, this)

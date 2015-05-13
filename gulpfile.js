@@ -10,7 +10,6 @@ var gutil      = require('gulp-util')
 var sourcemaps = require('gulp-sourcemaps')
 var mocha      = require('gulp-spawn-mocha')
 var clean      = require('gulp-clean')
-var plumber    = require('gulp-plumber')
 
 // browserify specific modules
 var watchify   = require('watchify')
@@ -99,8 +98,6 @@ gulp.task('browserify', function() {
 
 gulp.task('mocha', function() {
   gulp.src(['client/**/*.test.js'])
-    .on('error', gutil.log)
-    .pipe(plumber())
     .pipe(mocha({
       reporter: 'min',
       require: 'mocha-clean/brief',

@@ -10,6 +10,8 @@ describe('AddTodo :: Module', function() {
   before(function() {
     var Backbone = require('backbone')
     Backbone.$ = require('jquery')(window)
+
+    layoutChannel.reset()
   })
 
   it('should send command to show its view in header region', function(done) {

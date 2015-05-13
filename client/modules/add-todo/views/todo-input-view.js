@@ -63,4 +63,8 @@ module.exports = Marionette.ItemView.extend({
   onDestroy: function() {
     dataChannel.off('todo:created', emptyTodoInputField)
   },
+
+  resetDomSelectors: function() {
+    $todoInputField = undefined
+  },
 })

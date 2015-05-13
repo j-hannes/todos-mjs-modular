@@ -8,6 +8,7 @@ instrumentation:
     root: ./client
     include-all-sources: true
     excludes:
+      - "*.test.js"
       - main.js
       - plugins.js
       - ramda.js

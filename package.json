@@ -44,10 +44,6 @@
     "test-unit"
   ],
   "scripts": {
-    "blanket": {
-      "pattern": "src",
-      "data-cover-never": "node_modules"
-    },
     "prepush": "npm run test-integration",
     "test": "npm run test-integration && npm run test-unit",
     "test-integration": "pioneer",
