@@ -1,29 +1,29 @@
 'use strict'
 
-var Backbone = require('backbone')
-var TodoModel = require('./todo-model')
+// var Backbone = require('backbone')
+// var TodoModel = require('./todo-model')
 
-var dataChannel = require('backbone.radio').channel('data')
+// var dataChannel = require('backbone.radio').channel('data')
 
 
 // ####################
 // ### private area ###
 // ####################
 
-//+ nodifyItemAdded :: TodoModel -> AppEvent (TodoModel)
-var notifyItemAdded = function(todo) {
-  dataChannel.trigger('todo:created', todo)
-}
+// //+ nodifyItemAdded :: TodoModel -> AppEvent (TodoModel)
+// var notifyItemAdded = function(todo) {
+//   dataChannel.trigger('todo:created', todo)
+// }
 
 
 // ###########
 // ### API ###
 // ###########
 
-module.exports = Backbone.Collection.extend({
-  model: TodoModel,
+// module.exports = Backbone.Collection.extend({
+//   model: TodoModel,
 
-  initialize: function() {
-    this.listenTo(this, 'add', notifyItemAdded)
-  },
-})
+//   initialize: function() {
+//     this.listenTo(this, 'add', notifyItemAdded)
+//   },
+// })
