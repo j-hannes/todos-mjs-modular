@@ -62,7 +62,7 @@ gulp.task('watch', function() {
 // ### browserify
 
 var customOpts = {
-  entries: ['./client/main.js'],
+  entries: ['./client/src/main.js'],
   debug: true,
 }
 var opts = assign({}, watchify.args, customOpts)
@@ -86,7 +86,7 @@ w.on('log', gutil.log)
 
 gulp.task('browserify', function() {
   var b = browserify({
-    entries: ['./client/main.js'],
+    entries: ['./client/src/main.js'],
   })
 
   return b.bundle()
