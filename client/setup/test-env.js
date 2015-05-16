@@ -16,6 +16,7 @@ if (!global.document || !global.window) {
 
 // set common libraries as globals
 global.$ = require('jquery')
+global._ = require('lodash')
 global.Backbone = require('backbone')
 
 // set Backbone's jquery to the global jquery before loading Marionette
