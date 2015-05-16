@@ -41,15 +41,15 @@ var Marionette = require('backbone.marionette')
 // ##############
 
 module.exports = Marionette.Application.extend({
-//   layoutView: new AppLayoutView(),
+  // layoutView: new AppLayoutView(),
 
-//   initialize: function() {
-//     appChannel.comply('module:register', registerModule)
-//   },
+  // initialize: function() {
+  //   appChannel.comply('module:register', registerModule)
+  // },
 
-//   onStart: function() {
-//     startAutostartModules(modules)
-//   },
+  // onStart: function() {
+  //   startAutostartModules(modules)
+  // },
 })
 
 // exported as singleton
