@@ -23,3 +23,7 @@ global.Backbone.$ = global.$
 
 // set remaining libraries as globals
 global.Marionette = require('backbone.marionette')
+
+// set up message bus
+global.Radio = require('backbone.radio')
+global.Radio.DEBUG = true
