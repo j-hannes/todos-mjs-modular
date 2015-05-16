@@ -7,7 +7,7 @@
   "author": "j-hannes",
   "license": "MIT",
   "dependencies": {
-    "backbone": "^1.1.2",
+    "backbone": "~1.1.2",
     "backbone.marionette": "^2.4.1",
     "backbone.radio": "^0.9.0",
     "browserify": "^9.0.8",
