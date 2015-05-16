@@ -1,7 +1,8 @@
 'use strict'
 
 // libraries
-// var Marionette = require('backbone.marionette')
+var Marionette = require('backbone.marionette')
+
 // var λ = require('./libs/ramda')
 
 // data components
@@ -39,7 +40,7 @@
 // ### public ###
 // ##############
 
-// var Application = Marionette.Application.extend({
+module.exports = Marionette.Application.extend({
 //   layoutView: new AppLayoutView(),
 
 //   initialize: function() {
@@ -49,7 +50,7 @@
 //   onStart: function() {
 //     startAutostartModules(modules)
 //   },
-// })
+})
 
 // exported as singleton
 // module.exports = new Application()

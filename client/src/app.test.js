@@ -1,19 +1,13 @@
-'use strict'
+var Application = require('./app')
 
-// require('./test-env')
-
-// var sinon = require('sinon')
-// var Backbone = require('backbone')
-// var appChannel = require('backbone.radio').channel('app')
-// var jsdom = require('jsdom').jsdom
-
-// we have to do this for some reason because Marionette doesn't seem to like
-// the jsdom-mocha config loaded from test-env
-// Backbone.$ = require('jquery')(jsdom().parentWindow)
-// var app = require('./app')
-
-// run tests
 describe('App :: Application', function() {
+  'use strict'
+
+  it('should be a Marionette.Application', function() {
+    var app = new Application()
+    app.should.be.instanceOf(Marionette.Application)
+  })
+
   // it('should register command "module:register"', function() {
   //   appChannel._commands.should.have.property('module:register')
   // })
