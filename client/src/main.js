@@ -1,5 +1,5 @@
 // set up environment
-require('./plugins')
+require('../setup/plugins')
 
 // load application
 // var app = require('./app')
