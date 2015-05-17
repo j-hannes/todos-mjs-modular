@@ -36,6 +36,7 @@
     "husky": "^0.7.0",
     "jsdom": "^3.0.0",
     "mocha": "^2.2.1",
+    "mocha-clean": "^0.4.0",
     "pioneer": "^0.11.2",
     "precommit-hook": "^2.0.1"
   },
