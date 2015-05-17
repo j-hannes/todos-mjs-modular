@@ -11,6 +11,7 @@ var sourcemaps = require('gulp-sourcemaps')
 var istanbul   = require('gulp-istanbul')
 var mocha      = require('gulp-mocha')
 var clean      = require('gulp-clean')
+var plumber    = require('gulp-plumber')
 
 // browserify specific modules
 var watchify   = require('watchify')
@@ -107,7 +108,7 @@ gulp.task('mocha', function() {
 })
 
 gulp.task('TDD', function() {
-  gulp.watch(['client/**'], ['mocha'])
+  gulp.watch(['client/**'], ['test'])
 })
 
 gulp.task('test', function(cb) {
@@ -122,6 +123,7 @@ gulp.task('test', function(cb) {
     .pipe(istanbul.hookRequire())
     .on('finish', function() {
       gulp.src(['client/**/*.test.js'], {read: false})
+        .pipe(plumber())
         .pipe(mocha({
           reporter: 'min',
           globals: {
