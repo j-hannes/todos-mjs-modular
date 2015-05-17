@@ -9,7 +9,7 @@ var Marionette = require('backbone.marionette')
 // require('./data/todo')
 
 // view components
-// var AppLayoutView = require('./views/app-layout-view')
+var AppLayoutView = require('./views/app-layout-view')
 
 // channels
 // var radio = require('backbone.radio')
@@ -41,7 +41,7 @@ var Marionette = require('backbone.marionette')
 // ##############
 
 module.exports = Marionette.Application.extend({
-  // layoutView: new AppLayoutView(),
+  layoutView: new AppLayoutView(),
 
   // initialize: function() {
   //   appChannel.comply('module:register', registerModule)

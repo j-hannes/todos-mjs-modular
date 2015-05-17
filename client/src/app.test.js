@@ -1,4 +1,5 @@
 var Application = require('./app')
+var AppLayoutView = require('./views/app-layout-view')
 
 describe('App :: Application', function() {
   'use strict'
@@ -6,6 +7,11 @@ describe('App :: Application', function() {
   it('should be a Marionette.Application', function() {
     var app = new Application()
     app.should.be.instanceOf(Marionette.Application)
+  })
+
+  it('should have AppLayoutView as layoutView', function() {
+    var app = new Application()
+    app.layoutView.should.be.instanceOf(AppLayoutView)
   })
 
   // it('should register command "module:register"', function() {
