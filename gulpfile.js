@@ -98,15 +98,6 @@ gulp.task('browserify', function() {
     .pipe(gulp.dest('./dist/js/'))
 })
 
-gulp.task('mocha', function() {
-  gulp.src(['client/**/*.test.js'])
-    .pipe(mocha({
-      reporter: 'min',
-      require: 'mocha-clean/brief',
-      istanbul: true,
-    }))
-})
-
 gulp.task('TDD', function() {
   gulp.watch(['client/**'], ['test'])
 })
