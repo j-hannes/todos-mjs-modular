@@ -21,6 +21,7 @@
     "lodash": "^3.8.0",
     "lodash.assign": "^3.0.0",
     "normalize.css": "^3.0.3",
+    "ramda": "^0.14.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.1.0"
@@ -38,7 +39,9 @@
     "mocha": "^2.2.1",
     "mocha-clean": "^0.4.0",
     "pioneer": "^0.11.2",
-    "precommit-hook": "^2.0.1"
+    "precommit-hook": "^2.0.1",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0"
   },
   "pre-commit": [
     "jshint",
