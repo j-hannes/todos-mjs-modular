@@ -2,5 +2,4 @@
 
 find client -name *.test.js \
   | xargs node_modules/.bin/mocha \
-      --require=node_modules/mocha-clean/brief \
-      --require=client/setup/test-env
+      --require=node_modules/mocha-clean/brief

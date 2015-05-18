@@ -119,7 +119,6 @@ gulp.task('test', function(cb) {
           reporter: 'min',
           globals: {
             clean: require('mocha-clean/brief'),
-            env: require('./client/setup/test-env'),
           },
         }))
 

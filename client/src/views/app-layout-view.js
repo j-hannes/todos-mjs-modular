@@ -1,6 +1,7 @@
 'use strict'
 
-// var Marionette = require('backbone.marionette')
+var Marionette = require('backbone.marionette')
+
 // var layoutChannel = require('backbone.radio').channel('layout')
 
 module.exports = Marionette.LayoutView.extend({

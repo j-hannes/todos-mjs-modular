@@ -1,3 +1,9 @@
+require('../setup/test')
+require('../setup/dom')
+require('../setup/plugins')
+
+var Marionette = require('backbone.marionette')
+
 var Application = require('./app')
 var AppLayoutView = require('./views/app-layout-view')
 

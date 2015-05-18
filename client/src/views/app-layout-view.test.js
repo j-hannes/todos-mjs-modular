@@ -1,8 +1,15 @@
-'use strict'
+require('../../setup/test')
+require('../../setup/dom')
+require('../../setup/plugins')
+
+var $ = require('jquery')
+var _ = require('lodash')
+var Backbone = require('backbone')
 
 var AppLayoutView = require('./app-layout-view')
 
 describe('AppLayout :: View', function() {
+  'use strict'
 
   function createHeaderElementInDOM() {
     $('body').append('<div id="header"></div>')
