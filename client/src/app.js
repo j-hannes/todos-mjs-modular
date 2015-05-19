@@ -21,8 +21,12 @@ var appChannel = require('backbone.radio').channel('app')
 
 var modules = {}
 
-var registerModule = function(module) {
-  if (modules.hasOwnProperty(module.name)) {
+function alreadyRegistered(module) {
+  return modules.hasOwnProperty(module.name)
+}
+
+function registerModule(module) {
+  if (alreadyRegistered(module)) {
     throw new Error('Module already registered.')
   } else {
     modules[module.name] = module
