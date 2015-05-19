@@ -100,6 +100,7 @@ gulp.task('browserify', function() {
 
 gulp.task('TDD', function() {
   gulp.watch(['client/**'], ['test'])
+  gulp.run('test')
 })
 
 gulp.task('test', function(cb) {
