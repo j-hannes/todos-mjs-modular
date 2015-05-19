@@ -7,22 +7,53 @@ var Marionette = require('backbone.marionette')
 var Application = require('./app')
 var AppLayoutView = require('./views/app-layout-view')
 
+var appChannel = require('backbone.radio').channel('app')
+
 describe('App :: Application', function() {
   'use strict'
 
+  var app
+
+  beforeEach(function() {
+    app = new Application()
+  })
+
+  afterEach(function() {
+    app.destroy()
+  })
+
   it('should be a Marionette.Application', function() {
-    var app = new Application()
     app.should.be.instanceOf(Marionette.Application)
   })
 
   it('should have AppLayoutView as layoutView', function() {
-    var app = new Application()
     app.layoutView.should.be.instanceOf(AppLayoutView)
   })
 
-  // it('should register command "module:register"', function() {
-  //   appChannel._commands.should.have.property('module:register')
-  // })
+  it('should register a module via appChannel "module:register"', function() {
+    // build
+    var module = {name: 'Yuri\'s module'}
+
+    // operate
+    appChannel.command('module:register', module)
+
+    // check
+    app.getModule('Yuri\'s module').should.be.equal(module)
+  })
+
+  it('should not allow a module to register twice', function() {
+    // build
+    var module = {name: 'Rambo\'s module'}
+    appChannel.command('module:register', module)
+
+    // operate
+    var registerTwice = function() {
+      appChannel.command('module:register', module)
+    }
+
+    // check
+    registerTwice.should.throw('Module already registered.')
+  })
 
   // it('should start registered autostart modules on start', function() {
   //   var start = sinon.spy()
@@ -41,7 +72,6 @@ describe('App :: Application', function() {
   //   start.should.have.been.called
   // })
 
-  // it('should not allow a module to register twice', function() {
   //   var Module = function() {}
   //   var module = new Module()
 

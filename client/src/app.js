@@ -12,23 +12,22 @@ var Marionette = require('backbone.marionette')
 var AppLayoutView = require('./views/app-layout-view')
 
 // channels
-// var radio = require('backbone.radio')
-// var appChannel = radio.channel('app')
+var appChannel = require('backbone.radio').channel('app')
 
 
 // ###############
 // ### private ###
 // ###############
 
-// var modules = []
+var modules = {}
 
-// var registerModule = function(module) {
-//   if (λ.elem(module, modules)) {
-//     throw new Error('Module already registered.')
-//   } else {
-//     modules.push(module)
-//   }
-// }
+var registerModule = function(module) {
+  if (modules.hasOwnProperty(module.name)) {
+    throw new Error('Module already registered.')
+  } else {
+    modules[module.name] = module
+  }
+}
 
 // var start = function(module) {module.start()}
 // var autostart = function(module) {return module.autostart}
@@ -43,14 +42,20 @@ var AppLayoutView = require('./views/app-layout-view')
 module.exports = Marionette.Application.extend({
   layoutView: new AppLayoutView(),
 
-  // initialize: function() {
-  //   appChannel.comply('module:register', registerModule)
-  // },
+  initialize: function() {
+    appChannel.comply('module:register', registerModule)
+  },
+
+  getModule: function(key) {
+    return modules[key]
+  },
+
+  onDestroy: function() {
+    modules = {}
+    appChannel.stopComplying('module:register')
+  },
 
   // onStart: function() {
   //   startAutostartModules(modules)
   // },
 })
-
-// exported as singleton
-// module.exports = new Application()
