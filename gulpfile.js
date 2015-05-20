@@ -108,6 +108,7 @@ gulp.task('test', function(cb) {
       'client/**/*.js',
       '!client/**/*.test.js',
       '!client/setup/*',
+      '!client/src/main.js',
     ])
     .pipe(istanbul({
       includeUntested: true,
