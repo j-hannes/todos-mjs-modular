@@ -1,7 +1,7 @@
 'use strict'
 
 // libraries
-// var Marionette = require('backbone.marionette')
+var Marionette = require('backbone.marionette')
 
 // channels
 // var dataChannel = require('backbone.radio').channel('data')
@@ -44,7 +44,7 @@
 // ### API ###
 // ###########
 
-// module.exports = Marionette.ItemView.extend({
+module.exports = Marionette.ItemView.extend({
 //   tagName: 'form',
 //   template: '#todo-input-template',
 
@@ -67,4 +67,4 @@
 //   resetDomSelectors: function() {
 //     $todoInputField = undefined
 //   },
-// })
+})

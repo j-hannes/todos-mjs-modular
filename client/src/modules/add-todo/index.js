@@ -1,11 +1,11 @@
 'use strict'
 
-// channels
-// var layoutChannel = require('backbone.radio').channel('layout')
-
 // components
-// var Module = require('../../common/module')
-// var TodoInputView = require('./views/todo-input-view')
+var TodoInputView = require('./views/todo-input-view')
+var Module = require('../../common/module')
+
+// channels
+var layoutChannel = require('backbone.radio').channel('layout')
 
 
 // ####################
@@ -23,14 +23,13 @@
 // ### API ###
 // ###########
 
-// var AddTodoModule = Module.extend({
-//   autostart: true,
+module.exports = Module.extend({
 
-//   start: function() {
-//     var view = renderedTodoInputView()
-//     layoutChannel.command('show:header', view)
-//   },
-// })
+  autostart: true,
 
-// export as singleton
-// module.exports = new AddTodoModule()
+  start: function() {
+    // var view = renderedTodoInputView()
+    var view = new TodoInputView()
+    layoutChannel.command('show:header', view)
+  },
+})

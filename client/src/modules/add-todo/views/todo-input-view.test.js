@@ -1,13 +1,26 @@
 'use strict'
 
-// require('../../../test-env')
+require('../../../../setup/test')
+require('../../../../setup/dom')
+require('../../../../setup/plugins')
 
 // var Backbone = require('backbone')
-// var TodoInputView = require('./todo-input-view')
+var Marionette = require('backbone.marionette')
+
+// var AddTodoModule = require('./')
+// var Module = require('../../common/module')
+var TodoInputView = require('./todo-input-view')
+
+// var appChannel = require('backbone.radio').channel('app')
+// var layoutChannel = require('backbone.radio').channel('layout')
 // var dataChannel = require('backbone.radio').channel('data')
-// var loadHtmlDocument = require('../../../load-html-document')
 
 describe('TodoInput :: View', function() {
+  it('should be an ItemView', function() {
+    var view = new TodoInputView()
+    view.should.be.an.instanceOf(Marionette.ItemView)
+  })
+
   // before(function() {
   //   dataChannel.stopComplying()
   // })
