@@ -11,7 +11,6 @@ var sourcemaps = require('gulp-sourcemaps')
 var istanbul   = require('gulp-istanbul')
 var mocha      = require('gulp-mocha')
 var clean      = require('gulp-clean')
-var plumber    = require('gulp-plumber')
 
 // browserify specific modules
 var watchify   = require('watchify')
@@ -103,7 +102,12 @@ gulp.task('TDD', function() {
   gulp.run('test')
 })
 
-gulp.task('test', function(cb) {
+function swallowError(error) {
+  console.log(error.toString())
+  this.emit('end')
+}
+
+gulp.task('test', function() {
   gulp.src([
       'client/**/*.js',
       '!client/**/*.test.js',
@@ -116,23 +120,19 @@ gulp.task('test', function(cb) {
     .pipe(istanbul.hookRequire())
     .on('finish', function() {
       gulp.src(['client/**/*.test.js'], {read: false})
-        .pipe(plumber())
         .pipe(mocha({
           reporter: 'min',
           globals: {
             clean: require('mocha-clean/brief'),
           },
         }))
-
+        .on('error', swallowError)
         .pipe(istanbul.writeReports({
           reporters: [
             'html',
             'text-summary',
           ],
         }))
-
-        // .pipe(istanbul.enforceThresholds({thresholds: {global: 90}}))
-        .on('end', cb)
     })
 })
 
