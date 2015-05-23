@@ -4,13 +4,10 @@ require('../../../setup/dom')
 require('../../../setup/test')
 require('../../../setup/plugins')
 
-// var Marionette = require('backbone.marionette')
-
 var AddTodoModule = require('./')
 var Module = require('../../common/module')
 var TodoInputView = require('./views/todo-input-view')
 
-// var appChannel = require('backbone.radio').channel('app')
 var layoutChannel = require('backbone.radio').channel('layout')
 
 describe('AddTodo :: Module', function() {
@@ -39,13 +36,4 @@ describe('AddTodo :: Module', function() {
     addTodoModule.should.have.property('autostart')
     addTodoModule.autostart.should.be.true
   })
-
-  // it('should send command to show its view in header region', function(done){
-  //   layoutChannel.complyOnce('show:header', function(view) {
-  //     view.should.be.an.instanceOf(Marionette.ItemView)
-  //     done()
-  //   })
-
-  //   addTodoModule.start()
-  // }
 })

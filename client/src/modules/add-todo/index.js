@@ -8,17 +8,6 @@ var Module = require('../../common/module')
 var layoutChannel = require('backbone.radio').channel('layout')
 
 
-// ####################
-// ### private area ###
-// ####################
-
-// var renderedTodoInputView = function() {
-//   var view = new TodoInputView()
-//   view.render()
-//   return view
-// }
-
-
 // ###########
 // ### API ###
 // ###########
@@ -28,7 +17,6 @@ module.exports = Module.extend({
   autostart: true,
 
   start: function() {
-    // var view = renderedTodoInputView()
     var view = new TodoInputView()
     layoutChannel.command('show:header', view)
   },
