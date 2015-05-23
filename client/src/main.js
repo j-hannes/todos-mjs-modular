@@ -2,11 +2,15 @@
 require('../setup/plugins')
 
 // load application
-// var app = require('./app')
+var Application = require('./app')
+var app = new Application()
 
 // load modules
-// require('./modules/add-todo').register()
+var AddTodoModule = require('./modules/add-todo')
+var addTodoModule = new AddTodoModule()
+addTodoModule.register()
+
 // require('./modules/notifier').register()
 
 // start application
-// app.start()
+app.start()

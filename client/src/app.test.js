@@ -73,14 +73,19 @@ describe('App :: Marionette.Application', function() {
     start.should.have.been.called
   })
 
-  //   var Module = function() {}
-  //   var module = new Module()
+  it('should not start registered modules with no autostart', function() {
+    var start = sinon.spy()
 
-  //   appChannel.command('module:register', module)
-  //   var registerTwice = function() {
-  //     appChannel.command('module:register', module)
-  //   }
+    var Module = function() {
+      this.start = start
+    }
+    var module = new Module()
 
-  //   registerTwice.should.throw('Module already registered.')
-  // })
+    // execution
+    appChannel.command('module:register', module)
+    app.start()
+
+    // test
+    start.should.not.have.been.called
+  })
 })
