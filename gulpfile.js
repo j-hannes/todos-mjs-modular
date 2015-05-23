@@ -102,8 +102,8 @@ gulp.task('TDD', function() {
   gulp.run('test')
 })
 
-function swallowError(error) {
-  console.log(error.toString())
+function logError(error) {
+  gutil.log(gutil.colors.red(error.stack))
   this.emit('end')
 }
 
@@ -126,7 +126,7 @@ gulp.task('test', function() {
             clean: require('mocha-clean/brief'),
           },
         }))
-        .on('error', swallowError)
+        .on('error', logError)
         .pipe(istanbul.writeReports({
           reporters: [
             'html',
