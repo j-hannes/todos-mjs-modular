@@ -59,12 +59,15 @@
    * ==============
    */
 
-  // we have tests next to almost every file
+  // Add common mocha functions as globals.
   "mocha": true,
 
-  // surpress warning about mocha constructions
+  // Surpress warning about should.js constructions like "xyz.should.be.true".
   "expr": true,
 
-  // semicolon-free style
-  "asi": true
+  // Allow semicolon-free style.
+  "asi": true,
+
+  // Allow "this" in named functions.
+  "validthis": true
 }
