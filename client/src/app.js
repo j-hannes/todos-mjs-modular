@@ -57,6 +57,7 @@ module.exports = Marionette.Application.extend({
   onDestroy: function() {
     modules = {}
     appChannel.stopComplying('module:register')
+    this.layoutView.destroy()
   },
 
   // onStart: function() {

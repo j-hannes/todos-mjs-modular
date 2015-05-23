@@ -9,7 +9,7 @@ var AppLayoutView = require('./views/app-layout-view')
 
 var appChannel = require('backbone.radio').channel('app')
 
-describe('App :: Application', function() {
+describe('App :: Marionette.Application', function() {
   'use strict'
 
   var app

@@ -1,3 +1,7 @@
+'use strict'
+
+// imports and setup
+
 require('../../setup/test')
 require('../../setup/dom')
 require('../../setup/plugins')
@@ -8,24 +12,44 @@ var Backbone = require('backbone')
 
 var AppLayoutView = require('./app-layout-view')
 
-describe('AppLayout :: View', function() {
-  'use strict'
+var layoutChannel = require('backbone.radio').channel('layout')
 
-  function createHeaderElementInDOM() {
-    $('body').append('<div id="header"></div>')
-  }
+// local API
 
-  function createGenericView(options) {
-    var GenericView = Backbone.View.extend({
-      id: options.id,
-      template: _.template(options.content),
-      render: function() {
-        this.$el.html(this.template())
-        return this
-      },
-    })
-    return new GenericView()
-  }
+function createHeaderElementInDOM() {
+  $('body').append('<div id="header"></div>')
+}
+
+function createGenericView(options) {
+  var GenericView = Backbone.View.extend({
+    id: options.id,
+    template: _.template(options.content),
+    render: function() {
+      this.$el.html(this.template())
+      return this
+    },
+  })
+  return new GenericView()
+}
+
+function cleanBodyContent() {
+  $('body').empty()
+}
+
+// test suite
+
+describe('AppLayoutView :: Marionette.LayoutView', function() {
+
+  var layoutView
+
+  beforeEach(function() {
+    layoutView = new AppLayoutView()
+  })
+
+  afterEach(function() {
+    layoutView.destroy()
+    cleanBodyContent()
+  })
 
   it('should contain a header region', function() {
     // preparation
@@ -33,7 +57,6 @@ describe('AppLayout :: View', function() {
 
     var viewId = 'generic-view'
     var viewContent = 'my generic view content'
-    var layoutView = new AppLayoutView()
     var genericView = createGenericView({id: viewId, content: viewContent})
 
     // execution
@@ -43,30 +66,14 @@ describe('AppLayout :: View', function() {
     $('#' + viewId).html().should.be.equal(viewContent)
   })
 
-  // before(function() {
-  //   layoutChannel.stopComplying()
-  // })
+  it('should display content in the header region', function() {
+    createHeaderElementInDOM()
 
-  // it('should display content in the header region', function(done) {
-  //   loadHtmlDocument().then(function() {
-  //     // preparation
-  //     new AppLayoutView()
+    var view = new Backbone.View()
+    view.$el.append('hastenichgesehn')
 
-  //     var headerContainer = Backbone.$('<div>').attr('id', 'header')
-  //     Backbone.$('body').append(headerContainer)
+    layoutChannel.command('show:header', view)
 
-  //     var myView = new Backbone.View({
-  //       className: 'yuri',
-  //     })
-
-  //     // execution
-  //     layoutChannel.command('show:header', myView)
-
-  //     // test
-  //     var myViewEl = Backbone.$('#header').find('.yuri')
-  //     myViewEl.length.should.be.greaterThan(0)
-
-  //     done()
-  //   })
-  // })
+    $('#header').html().should.contain('hastenichgesehn')
+  })
 })

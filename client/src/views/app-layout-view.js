@@ -2,7 +2,11 @@
 
 var Marionette = require('backbone.marionette')
 
-// var layoutChannel = require('backbone.radio').channel('layout')
+var layoutChannel = require('backbone.radio').channel('layout')
+
+function showViewInHeader(view) {
+  this.header.show(view)
+}
 
 module.exports = Marionette.LayoutView.extend({
   el: 'body',
@@ -11,14 +15,19 @@ module.exports = Marionette.LayoutView.extend({
     header: '#header',
   },
 
-  // initialize: function() {
-  //   this.registerCommands()
-  // },
+  initialize: function() {
+    this.registerCommands()
+  },
 
-  // registerCommands: function() {
-  //   // layoutChannel.stopComplying('show:header')
-  //   layoutChannel.comply('show:header', function(view) {
-  //     this.header.show(view)
-  //   }, this)
-  // },
+  registerCommands: function() {
+    layoutChannel.comply('show:header', showViewInHeader, this)
+  },
+
+  onDestroy: function() {
+    layoutChannel.stopComplying('show:header')
+
+    // bad!
+    var $ = require('jquery')
+    $('html').html('<body></body>')
+  },
 })

@@ -45,26 +45,26 @@ var Marionette = require('backbone.marionette')
 // ###########
 
 module.exports = Marionette.ItemView.extend({
-//   tagName: 'form',
-//   template: '#todo-input-template',
+  // tagName: 'form',
+  template: '#todo-input-template',
 
-//   events: {
-//     submit: handleFormSubmit,
-//   },
+  // events: {
+  //   submit: handleFormSubmit,
+  // },
 
-//   initialize: function() {
-//     registerRadioListeners()
-//   },
+  // initialize: function() {
+  //   registerRadioListeners()
+  // },
 
-//   onRender: function() {
-//     cacheDomSelectors(this)
-//   },
+  // onRender: function() {
+  //   cacheDomSelectors(this)
+  // },
 
-//   onDestroy: function() {
-//     dataChannel.off('todo:created', emptyTodoInputField)
-//   },
+  // onDestroy: function() {
+  //   dataChannel.off('todo:created', emptyTodoInputField)
+  // },
 
-//   resetDomSelectors: function() {
-//     $todoInputField = undefined
-//   },
+  // resetDomSelectors: function() {
+  //   $todoInputField = undefined
+  // },
 })

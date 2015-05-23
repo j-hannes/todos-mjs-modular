@@ -1,6 +1,6 @@
 'use strict'
 
-// require('../setup/dom')
+require('../../../setup/dom')
 require('../../../setup/test')
 require('../../../setup/plugins')
 
@@ -14,6 +14,7 @@ var TodoInputView = require('./views/todo-input-view')
 var layoutChannel = require('backbone.radio').channel('layout')
 
 describe('AddTodo :: Module', function() {
+
   it('should be a Module', function() {
     var addTodoModule = new AddTodoModule()
     addTodoModule.should.be.an.instanceOf(Module)
@@ -21,31 +22,23 @@ describe('AddTodo :: Module', function() {
 
   it('should send a show:header command with a TodoInputView instance on start',
      function(done) {
-    layoutChannel.comply('show:header', function(view) {
+    function testTodoInputViewInstance(view) {
       view.should.be.an.instanceOf(TodoInputView)
+      layoutChannel.stopComplying('show:header', testTodoInputViewInstance)
       done()
-    })
+    }
+
+    layoutChannel.comply('show:header', testTodoInputViewInstance)
 
     var addTodoModule = new AddTodoModule()
     addTodoModule.start()
   })
 
-  it('should have an autostart attribute', function() {
-    var addTodoModule = new AddTodoModule()
-    addTodoModule.should.have.property('autostart')
-  })
-
   it('should have autostart set to true', function() {
     var addTodoModule = new AddTodoModule()
+    addTodoModule.should.have.property('autostart')
     addTodoModule.autostart.should.be.true
   })
-
-  // before(function() {
-  //   var Backbone = require('backbone')
-  //   Backbone.$ = require('jquery')(window)
-
-  //   layoutChannel.reset()
-  // })
 
   // it('should send command to show its view in header region', function(done){
   //   layoutChannel.complyOnce('show:header', function(view) {

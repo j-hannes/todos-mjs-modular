@@ -6,7 +6,7 @@ require('../../setup/plugins')
 var Module = require('./module')
 var appChannel = require('backbone.radio').channel('app')
 
-describe('Module', function() {
+describe('Module :: Marionette.Object', function() {
   afterEach(function() {
     appChannel.stopComplying()
   })
