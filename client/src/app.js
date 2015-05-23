@@ -3,7 +3,7 @@
 // libraries
 var Marionette = require('backbone.marionette')
 
-// var λ = require('./libs/ramda')
+var f = require('../libs/functools')
 
 // data components
 // require('./data/todo')
@@ -33,10 +33,10 @@ function registerModule(module) {
   }
 }
 
-// var start = function(module) {module.start()}
-// var autostart = function(module) {return module.autostart}
+var start = function(module) {module.start()}
+var autostart = function(module) {return module.autostart}
 
-// var startAutostartModules = λ.compose(λ.map(start), λ.filter(autostart))
+var startAutostartModules = f.compose(f.mapObj(start), f.filterObj(autostart))
 
 
 // ##############
@@ -60,7 +60,7 @@ module.exports = Marionette.Application.extend({
     this.layoutView.destroy()
   },
 
-  // onStart: function() {
-  //   startAutostartModules(modules)
-  // },
+  onStart: function() {
+    startAutostartModules(modules)
+  },
 })

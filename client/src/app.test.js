@@ -2,6 +2,7 @@ require('../setup/test')
 require('../setup/dom')
 require('../setup/plugins')
 
+var sinon = require('sinon')
 var Marionette = require('backbone.marionette')
 
 var Application = require('./app')
@@ -55,22 +56,22 @@ describe('App :: Marionette.Application', function() {
     registerTwice.should.throw('Module already registered.')
   })
 
-  // it('should start registered autostart modules on start', function() {
-  //   var start = sinon.spy()
+  it('should start registered autostart modules on start', function() {
+    var start = sinon.spy()
 
-  //   var Module = function() {
-  //     this.start = start
-  //     this.autostart = true
-  //   }
-  //   var module = new Module()
+    var Module = function() {
+      this.start = start
+      this.autostart = true
+    }
+    var module = new Module()
 
-  //   // execution
-  //   appChannel.command('module:register', module)
-  //   app.start()
+    // execution
+    appChannel.command('module:register', module)
+    app.start()
 
-  //   // test
-  //   start.should.have.been.called
-  // })
+    // test
+    start.should.have.been.called
+  })
 
   //   var Module = function() {}
   //   var module = new Module()
