@@ -4,7 +4,6 @@ require('../../../../setup/test')
 require('../../../../setup/dom')
 require('../../../../setup/plugins')
 
-// var Backbone = require('backbone')
 var $ = require('jquery')
 var Marionette = require('backbone.marionette')
 
@@ -14,19 +13,22 @@ var TodoInputView = require('./todo-input-view')
 
 // var appChannel = require('backbone.radio').channel('app')
 // var layoutChannel = require('backbone.radio').channel('layout')
-// var dataChannel = require('backbone.radio').channel('data')
+var dataChannel = require('backbone.radio').channel('data')
 
-var c = require('ramda').compose
+var compose = require('ramda').compose
 
-function createTodoInputTemplate(params) {
-  return $('<div id="todo-input-template">').html(params.content)
+var createTodoInputTemplate = function(params) {
+  return $('<script>')
+    .attr('type', 'text/html')
+    .attr('id', 'todo-input-template')
+    .html(params.content)
 }
 
-function insertIntoBody(content) {
+var insertIntoBody = function(content) {
   $('body').append(content)
 }
 
-function cleanBodyContent() {
+var cleanBodyContent = function() {
   $('body').empty()
 }
 
@@ -34,52 +36,51 @@ describe('TodoInputView :: Marionette.ItemView', function() {
 
   var view
 
+  before(function() {
+    var content = '<input id="new-todo" type="text">'
+    compose(insertIntoBody, createTodoInputTemplate)({content: content})
+  })
+
   beforeEach(function() {
     view = new TodoInputView()
   })
 
   afterEach(function() {
     view.destroy()
-    cleanBodyContent()
   })
+
+  after(cleanBodyContent)
 
   it('should be an ItemView', function() {
     view.should.be.an.instanceOf(Marionette.ItemView)
   })
 
   it('should use #todo-input-template', function() {
-    c(insertIntoBody, createTodoInputTemplate) ({content: 'yuri the russian'})
-
     view.render()
-
-    view.el.innerHTML.should.contain('yuri the russian')
+    view.el.innerHTML.should.be.equal($('#todo-input-template').html())
   })
 
-  // it('should be destroyed without a big explosion', function(done) {
-  //   loadHtmlDocument({live: true}).then(function() {
-  //     var view = new TodoInputView()
-  //     view.destroy()
-  //     done()
-  //   })
-  // })
+  it('should send input text to data channel', function(done) {
+    view.render()
+    view.$('#new-todo').val('yuri42')
 
-  // it('should send input text to data channel', function(done) {
-  //   var view = new TodoInputView()
-  //   view.render()
-  //   view.$('#new-todo').val('yuri42')
+    var test = function(title) {
+      title.should.be.equal('yuri42')
+      done()
+      dataChannel.stopComplying('todos:add', test)
+    }
 
-  //   dataChannel.comply('todos:add', function(title) {
-  //     if (title === 'yuri42') {
-  //       done()
-  //     }
-  //   })
+    dataChannel.comply('todos:add', test)
 
-  //   Backbone.$(view.el).submit()
-  // })
+    view.$el.submit()
+  })
 
-  // it('should send input text to data channel', function() {
-  //   var view = new TodoInputView()
-  //   view.resetDomSelectors()
-  //   Backbone.$(view.el).submit()
-  // })
+  it('should empty input field on dataChannel event todo:created', function() {
+    view.render()
+    view.$('#new-todo').val('something')
+
+    dataChannel.trigger('todo:created')
+
+    view.$('#new-todo').val().should.be.equal('')
+  })
 })

@@ -4,40 +4,37 @@
 var Marionette = require('backbone.marionette')
 
 // channels
-// var dataChannel = require('backbone.radio').channel('data')
+var dataChannel = require('backbone.radio').channel('data')
 
 
 // ####################
 // ### private area ###
 // ####################
 
-// var $todoInputField
+var $todoInputField
 
-// var getInputValue = function() {
-//   if ($todoInputField && typeof $todoInputField.val === 'function') {
-//     return $todoInputField.val()
-//   } else {
-//     return ''
-//   }
-// }
+var getInputValue = function() {
+  return $todoInputField.val()
+}
 
-// var handleFormSubmit = function(e) {
-//   e.preventDefault()
-//   var todoTitle = getInputValue()
-//   dataChannel.command('todos:add', todoTitle)
-// }
+var handleFormSubmit = function(e) {
+  e.preventDefault()
 
-// var cacheDomSelectors = function(view) {
-//   $todoInputField = view.$('#new-todo')
-// }
+  var todoTitle = getInputValue()
+  dataChannel.command('todos:add', todoTitle)
+}
 
-// var emptyTodoInputField = function() {
-//   $todoInputField.val('')
-// }
+var cacheDomSelectors = function(view) {
+  $todoInputField = view.$('#new-todo')
+}
 
-// var registerRadioListeners = function() {
-//   dataChannel.on('todo:created', emptyTodoInputField)
-// }
+var emptyTodoInputField = function() {
+  $todoInputField.val('')
+}
+
+var registerRadioListeners = function() {
+  dataChannel.on('todo:created', emptyTodoInputField)
+}
 
 
 // ###########
@@ -45,26 +42,24 @@ var Marionette = require('backbone.marionette')
 // ###########
 
 module.exports = Marionette.ItemView.extend({
-  // tagName: 'form',
+
+  tagName: 'form',
+
   template: '#todo-input-template',
 
-  // events: {
-  //   submit: handleFormSubmit,
-  // },
+  events: {
+    submit: handleFormSubmit,
+  },
 
-  // initialize: function() {
-  //   registerRadioListeners()
-  // },
+  initialize: function() {
+    registerRadioListeners()
+  },
 
-  // onRender: function() {
-  //   cacheDomSelectors(this)
-  // },
+  onRender: function() {
+    cacheDomSelectors(this)
+  },
 
-  // onDestroy: function() {
-  //   dataChannel.off('todo:created', emptyTodoInputField)
-  // },
-
-  // resetDomSelectors: function() {
-  //   $todoInputField = undefined
-  // },
+  onDestroy: function() {
+    dataChannel.off('todo:created', emptyTodoInputField)
+  },
 })
