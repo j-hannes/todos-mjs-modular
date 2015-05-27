@@ -1,5 +1,7 @@
 'use strict'
 
+require('../../../setup/test')
+
 var Backbone = require('backbone')
 
 var TodoModel = require('./todo-model')

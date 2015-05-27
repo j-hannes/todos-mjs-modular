@@ -7,12 +7,8 @@ require('../../../../setup/plugins')
 var $ = require('jquery')
 var Marionette = require('backbone.marionette')
 
-// var AddTodoModule = require('./')
-// var Module = require('../../common/module')
 var TodoInputView = require('./todo-input-view')
 
-// var appChannel = require('backbone.radio').channel('app')
-// var layoutChannel = require('backbone.radio').channel('layout')
 var dataChannel = require('backbone.radio').channel('data')
 
 var compose = require('ramda').compose
