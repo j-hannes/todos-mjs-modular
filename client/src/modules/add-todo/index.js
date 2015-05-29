@@ -17,7 +17,11 @@ module.exports = Module.extend({
   autostart: true,
 
   start: function() {
-    var view = new TodoInputView()
-    layoutChannel.command('show:header', view)
+    this.todoInputView = new TodoInputView()
+    layoutChannel.command('show:header', this.todoInputView)
+  },
+
+  onDestroy: function() {
+    this.todoInputView && this.todoInputView.destroy()
   },
 })

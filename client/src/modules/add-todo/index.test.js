@@ -4,6 +4,8 @@ require('../../../setup/dom')
 require('../../../setup/test')
 require('../../../setup/plugins')
 
+var sinon = require('sinon')
+
 var AddTodoModule = require('./')
 var Module = require('../../common/module')
 var TodoInputView = require('./views/todo-input-view')
@@ -12,8 +14,17 @@ var layoutChannel = require('backbone.radio').channel('layout')
 
 describe('AddTodo :: Module', function() {
 
+  var addTodoModule
+
+  beforeEach(function() {
+    addTodoModule = new AddTodoModule()
+  })
+
+  afterEach(function() {
+    addTodoModule.destroy()
+  })
+
   it('should be a Module', function() {
-    var addTodoModule = new AddTodoModule()
     addTodoModule.should.be.an.instanceOf(Module)
   })
 
@@ -27,13 +38,44 @@ describe('AddTodo :: Module', function() {
 
     layoutChannel.comply('show:header', testTodoInputViewInstance)
 
-    var addTodoModule = new AddTodoModule()
     addTodoModule.start()
   })
 
   it('should have autostart set to true', function() {
-    var addTodoModule = new AddTodoModule()
     addTodoModule.should.have.property('autostart')
     addTodoModule.autostart.should.be.true
+  })
+
+  it('should create a todoInputView member variable on start', function() {
+    // prepare
+    var fakeHandler = function() {}
+    layoutChannel.comply('show:header', fakeHandler)
+
+    // invoke
+    addTodoModule.start()
+
+    // check
+    addTodoModule.should.have.property('todoInputView')
+
+    // clean up
+    layoutChannel.stopComplying('show:header', fakeHandler)
+  })
+
+  it('should destroy its view when destroyed', function() {
+    // prepare
+    var fakeHandler = function() {}
+    layoutChannel.comply('show:header', fakeHandler)
+    addTodoModule.start()
+    var spy = sinon.spy(addTodoModule.todoInputView, 'destroy')
+
+    // invoke
+    addTodoModule.destroy()
+
+    // check
+    spy.should.have.been.called
+
+    // clean up
+    addTodoModule = new AddTodoModule()
+    layoutChannel.stopComplying('show:header', fakeHandler)
   })
 })

@@ -1,31 +1,28 @@
 'use strict'
 
 // channels
-// var dataChannel = require('backbone.radio').channel('data')
+var dataChannel = require('backbone.radio').channel('data')
 
 // components
-// var Module = require('../../common/module')
-
-// ####################
-// ### private area ###
-// ####################
-
-// var logTodos = function(todo) {
-//   console.log(todo.toJSON())
-// }
+var Module = require('../../common/module')
 
 
 // ###########
 // ### API ###
 // ###########
 
-// var NotifierModule = Module.extend({
-//   autostart: true,
+module.exports = Module.extend({
+  autostart: true,
 
-//   start: function() {
-//     dataChannel.on('todo:created', logTodos)
-//   },
-// })
+  logTodos: function(todo) {
+    console.log(todo.toJSON())
+  },
 
-// export as singleton
-// module.exports = new NotifierModule()
+  start: function() {
+    dataChannel.on('todo:created', this.logTodos)
+  },
+
+  onDestroy: function() {
+    dataChannel.off('todo:created', this.logTodos)
+  },
+})

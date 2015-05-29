@@ -1,34 +1,71 @@
 'use strict'
 
-// require('../../test-env')
+require('../../../setup/dom')
+require('../../../setup/test')
+require('../../../setup/plugins')
 
-// var Backbone = require('backbone')
-// var sinon = require('sinon')
-// var notifier = require('./')
-// var dataChannel = require('backbone.radio').channel('data')
+var NotifierModule = require('./')
+var Module = require('../../common/module')
+
+var Backbone = require('backbone')
+var sinon = require('sinon')
+var dataChannel = require('backbone.radio').channel('data')
 
 describe('Notifier :: Module', function() {
-  // before(function() {
-  //   dataChannel.reset()
-  // })
 
-  // it('reacts to "todo:created" on dataChannel', function() {
-  //   // store console.log
-  //   var log = console.log
+  var notifierModule
 
-  //   // modify console.log + spy
-  //   console.log = function() {}
-  //   var spy = sinon.spy(console, 'log')
+  var consolelog
 
-  //   // set up test
-  //   notifier.start()
-  //   var todo = new Backbone.Model({title: 'foo'})
-  //   dataChannel.trigger('todo:created', todo)
+  beforeEach(function() {
+    notifierModule = new NotifierModule()
 
-  //   // check
-  //   spy.should.have.been.calledWith({title: 'foo' })
+    // replace console.log with dummy to suppress output
+    consolelog = console.log
+    console.log = function() {}
+  })
 
-  //   // restore console.log
-  //   console.log = log
-  // })
+  afterEach(function() {
+    notifierModule.destroy()
+    console.log = consolelog
+  })
+
+  it('should be a Module', function() {
+    notifierModule.should.be.an.instanceOf(Module)
+  })
+
+  it('should have autostart set to true', function() {
+    notifierModule.should.have.property('autostart')
+    notifierModule.autostart.should.be.true
+  })
+
+  it('should listen to "todos:created"', function() {
+    // prepare
+    var spy = sinon.spy(notifierModule, 'logTodos')
+    var model = new Backbone.Model({father: 'Anakin'})
+    notifierModule.start()
+
+    // invoke
+    dataChannel.trigger('todo:created', model)
+
+    // check
+    spy.should.have.been.calledWith(model)
+  })
+
+  it('should stop listening to "todos:created" on destroy', function() {
+    // prepare
+    var spy = sinon.spy(notifierModule, 'logTodos')
+    notifierModule.start()
+
+    // invoke
+    notifierModule.destroy()
+    dataChannel.trigger('todo:created', new Backbone.Model())
+
+    // check
+    spy.should.not.have.been.called
+
+    // clean up
+    notifierModule = new NotifierModule()
+  })
+
 })
