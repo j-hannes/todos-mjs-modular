@@ -6,7 +6,7 @@ var Marionette = require('backbone.marionette')
 var f = require('../libs/functools')
 
 // data components
-// require('./data/todo')
+var TodoCollection = require('./data/todo/todo-collection')
 
 // view components
 var AppLayoutView = require('./views/app-layout-view')
@@ -38,26 +38,41 @@ var autostart = function(module) {return module.autostart}
 
 var startAutostartModules = f.compose(f.mapObj(start), f.filterObj(autostart))
 
+var DestroyableApplication = Marionette.Application.extend({
+
+  isDestroyed: false,
+
+  onDestroy: function() {
+    if (!this.isDestroyed) {
+      this.runDestroyProcedure()
+    }
+  },
+})
+
 
 // ##############
 // ### public ###
 // ##############
 
-module.exports = Marionette.Application.extend({
+module.exports = DestroyableApplication.extend({
+
   layoutView: new AppLayoutView(),
 
   initialize: function() {
     appChannel.comply('module:register', registerModule)
+    this.todos = new TodoCollection()
   },
 
   getModule: function(key) {
     return modules[key]
   },
 
-  onDestroy: function() {
+  runDestroyProcedure: function() {
     modules = {}
     appChannel.stopComplying('module:register')
     this.layoutView.destroy()
+    this.todos.destroy()
+    this.isDestroyed = true
   },
 
   onStart: function() {

@@ -3,7 +3,7 @@ require('../setup/plugins')
 
 // load application
 var Application = require('./app')
-var app = new Application()
+var app = window.app = new Application()
 
 // load modules
 var AddTodoModule = require('./modules/add-todo')

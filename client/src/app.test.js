@@ -7,6 +7,7 @@ var Marionette = require('backbone.marionette')
 
 var Application = require('./app')
 var AppLayoutView = require('./views/app-layout-view')
+var TodoCollection = require('./data/todo/todo-collection')
 
 var appChannel = require('backbone.radio').channel('app')
 
@@ -87,5 +88,16 @@ describe('App :: Marionette.Application', function() {
 
     // test
     start.should.not.have.been.called
+  })
+
+  it('should initialize a todo collection', function() {
+    app.should.have.property('todos')
+    app.todos.should.be.an.instanceOf(TodoCollection)
+  })
+
+  it('should destroy the todo collection when app gets destroyed', function() {
+    var spy = sinon.spy(app.todos, 'destroy')
+    app.destroy()
+    spy.should.have.been.called
   })
 })
