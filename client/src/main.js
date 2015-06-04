@@ -1,3 +1,5 @@
+'use strict'
+
 // set up environment
 require('../setup/plugins')
 
@@ -5,12 +7,13 @@ require('../setup/plugins')
 var Application = require('./app')
 var app = window.app = new Application()
 
-// load modules
-var AddTodoModule = require('./modules/add-todo')
-var addTodoModule = new AddTodoModule()
-addTodoModule.register()
+var loadModule = function(Module) {
+  var module = new Module()
+  module.register()
+}
 
-// require('./modules/notifier').register()
+loadModule(require('./modules/add-todo'))
+loadModule(require('./modules/notifier'))
 
 // start application
 app.start()

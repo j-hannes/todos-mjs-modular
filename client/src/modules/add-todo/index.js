@@ -14,6 +14,8 @@ var layoutChannel = require('backbone.radio').channel('layout')
 
 module.exports = Module.extend({
 
+  name: 'add-todo',
+
   autostart: true,
 
   start: function() {

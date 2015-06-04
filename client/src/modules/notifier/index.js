@@ -12,6 +12,9 @@ var Module = require('../../common/module')
 // ###########
 
 module.exports = Module.extend({
+
+  name: 'notifier',
+
   autostart: true,
 
   logTodos: function(todo) {
