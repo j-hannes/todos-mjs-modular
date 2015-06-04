@@ -24,10 +24,7 @@ module.exports = Backbone.Collection.extend({
   model: TodoModel,
 
   addTodo: function(title) {
-    if (typeof title !== 'string') return
-    var trimmedTitle = title && title.trim()
-    if (!trimmedTitle) return
-    this.add({title: title})
+    this.add({title: title}, {validate: true})
   },
 
   listTodos: function() {

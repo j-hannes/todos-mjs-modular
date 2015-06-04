@@ -40,14 +40,14 @@ describe('TodoCollection :: Collection', function() {
     collection.add(model)
   })
 
-  it('should add a valid title on dataChannel.todos:add', function() {
+  it('should add a valid title from dataChannel.todos:add', function() {
     var title = 'foo'
     dataChannel.command('todos:add', title)
     collection.length.should.be.equal(1)
     collection.at(0).get('title').should.be.equal(title)
   })
 
-  it('should not add an invalid title on dataChannel.todos:add', function() {
+  it('should not add an invalid title from dataChannel.todos:add', function() {
     dataChannel.command('todos:add', 0)
     dataChannel.command('todos:add', '')
     dataChannel.command('todos:add', ' ')
