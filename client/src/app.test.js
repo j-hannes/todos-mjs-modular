@@ -43,6 +43,15 @@ describe('App :: Marionette.Application', function() {
     app.getModule('Yuri\'s module').should.be.equal(module)
   })
 
+  it('should not allow module to register with no name specified', function() {
+    var module = {}
+    var registerWithNoName = function() {
+      appChannel.command('module:register', module)
+    }
+
+    registerWithNoName.should.throw('No name for module specified')
+  })
+
   it('should not allow a module to register twice', function() {
     // build
     var module = {name: 'Rambo\'s module'}
@@ -58,36 +67,32 @@ describe('App :: Marionette.Application', function() {
   })
 
   it('should start registered autostart modules on start', function() {
-    var start = sinon.spy()
-
-    var Module = function() {
-      this.start = start
-      this.autostart = true
+    var module = {
+      start: sinon.spy(),
+      autostart: true,
+      name: 'foo-module',
     }
-    var module = new Module()
 
     // execution
     appChannel.command('module:register', module)
     app.start()
 
     // test
-    start.should.have.been.called
+    module.start.should.have.been.called
   })
 
   it('should not start registered modules with no autostart', function() {
-    var start = sinon.spy()
-
-    var Module = function() {
-      this.start = start
+    var module = {
+      start: sinon.spy(),
+      name: 'foo-module',
     }
-    var module = new Module()
 
     // execution
     appChannel.command('module:register', module)
     app.start()
 
     // test
-    start.should.not.have.been.called
+    module.start.should.not.have.been.called
   })
 
   it('should initialize a todo collection', function() {

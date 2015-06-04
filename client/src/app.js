@@ -26,7 +26,9 @@ function alreadyRegistered(module) {
 }
 
 function registerModule(module) {
-  if (alreadyRegistered(module)) {
+  if (!module.name) {
+    throw new Error('No name for module specified.')
+  } else if (alreadyRegistered(module)) {
     throw new Error('Module already registered.')
   } else {
     modules[module.name] = module
