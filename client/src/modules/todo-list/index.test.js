@@ -23,4 +23,5 @@ describe('TodoList :: Module', function() {
     todoList.should.have.property('autostart')
     todoList.autostart.should.be.true
   })
+
 })
