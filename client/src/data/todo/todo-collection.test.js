@@ -64,4 +64,5 @@ describe('TodoCollection :: Collection', function() {
 
     json.should.be.deep.equal([{title: 'foo', completed: false}])
   })
+
 })

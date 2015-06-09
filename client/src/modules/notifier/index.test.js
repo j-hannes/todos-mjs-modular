@@ -34,6 +34,10 @@ describe('Notifier :: Module', function() {
     notifierModule.should.be.an.instanceOf(Module)
   })
 
+  it('should have a name', function() {
+    notifierModule.should.have.property('name')
+  })
+
   it('should have autostart set to true', function() {
     notifierModule.should.have.property('autostart')
     notifierModule.autostart.should.be.true

@@ -2,14 +2,17 @@ require('../setup/test')
 require('../setup/dom')
 require('../setup/plugins')
 
-var sinon = require('sinon')
 var Marionette = require('backbone.marionette')
+var radio = require('backbone.radio')
+
+var sinon = require('sinon')
 
 var Application = require('./app')
 var AppLayoutView = require('./views/app-layout-view')
 var TodoCollection = require('./data/todo/todo-collection')
 
-var appChannel = require('backbone.radio').channel('app')
+var appChannel = radio.channel('app')
+var dataChannel = radio.channel('data')
 
 describe('App :: Marionette.Application', function() {
   'use strict'
@@ -105,4 +108,9 @@ describe('App :: Marionette.Application', function() {
     app.destroy()
     spy.should.have.been.called
   })
+
+  it('should provide todo-collection on request', function() {
+    dataChannel.request('todo-collection').should.be.equal(app.todos)
+  })
+
 })

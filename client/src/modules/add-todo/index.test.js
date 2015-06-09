@@ -28,6 +28,10 @@ describe('AddTodo :: Module', function() {
     addTodoModule.should.be.an.instanceOf(Module)
   })
 
+  it('should have a name', function() {
+    addTodoModule.should.have.property('name')
+  })
+
   it('should send a show:header command with a TodoInputView instance on start',
      function(done) {
     function testTodoInputViewInstance(view) {

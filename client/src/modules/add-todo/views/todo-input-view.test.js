@@ -37,6 +37,8 @@ describe('TodoInputView :: Marionette.ItemView', function() {
     compose(insertIntoBody, createTodoInputTemplate)({content: content})
   })
 
+  after(cleanBodyContent)
+
   beforeEach(function() {
     view = new TodoInputView()
   })
@@ -44,8 +46,6 @@ describe('TodoInputView :: Marionette.ItemView', function() {
   afterEach(function() {
     view.destroy()
   })
-
-  after(cleanBodyContent)
 
   it('should be an ItemView', function() {
     view.should.be.an.instanceOf(Marionette.ItemView)

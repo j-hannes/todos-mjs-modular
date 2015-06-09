@@ -2,6 +2,7 @@
 
 // libraries
 var Marionette = require('backbone.marionette')
+var radio = require('backbone.radio')
 
 var f = require('../libs/functools')
 
@@ -12,7 +13,8 @@ var TodoCollection = require('./data/todo/todo-collection')
 var AppLayoutView = require('./views/app-layout-view')
 
 // channels
-var appChannel = require('backbone.radio').channel('app')
+var appChannel = radio.channel('app')
+var dataChannel = radio.channel('data')
 
 
 // ###############
@@ -63,6 +65,7 @@ module.exports = DestroyableApplication.extend({
   initialize: function() {
     appChannel.comply('module:register', registerModule)
     this.todos = new TodoCollection()
+    dataChannel.reply('todo-collection', this.todos)
   },
 
   getModule: function(key) {
@@ -72,6 +75,7 @@ module.exports = DestroyableApplication.extend({
   runDestroyProcedure: function() {
     modules = {}
     appChannel.stopComplying('module:register')
+    dataChannel.stopReplying('todo-collection')
     this.layoutView.destroy()
     this.todos.destroy()
     this.isDestroyed = true
@@ -80,4 +84,5 @@ module.exports = DestroyableApplication.extend({
   onStart: function() {
     startAutostartModules(modules)
   },
+
 })

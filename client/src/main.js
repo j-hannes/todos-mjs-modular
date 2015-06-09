@@ -13,6 +13,7 @@ var loadModule = function(Module) {
 }
 
 loadModule(require('./modules/add-todo'))
+loadModule(require('./modules/todo-list'))
 loadModule(require('./modules/notifier'))
 
 // start application
