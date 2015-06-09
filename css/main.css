@@ -46,3 +46,27 @@ body {
   outline: none;
   box-shadow: 0 0 5px #ccc;
 }
+
+.todo-list-container {
+  position: absolute;
+  top: 75px;
+  left: 20px;
+  right: 0;
+}
+
+.todo-list-container ul {
+  margin: 0;
+  padding: 0;
+}
+
+.todo-list-container li {
+  display: block;
+  background: white;
+  opacity: 0.7;
+  width: 90%;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+
