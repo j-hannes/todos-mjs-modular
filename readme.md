@@ -2,7 +2,9 @@
 
 A modular marionette.js application for demonstration purposes.
 
-More documentation to come...
+# todo
+
+Test with mocha. But only behaviors (api functions).
 
 ## stack
 

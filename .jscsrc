@@ -27,7 +27,7 @@
     // "disallowTrailingComma": true,
     "disallowYodaConditions": true,
     "disallowKeywords": [ "with" ],
-    "disallowMultipleLineBreaks": true,
+    // "disallowMultipleLineBreaks": true,
     "disallowMultipleVarDecl": true,
     "requireSpaceBeforeBlockStatements": true,
     "requireParenthesesAroundIIFE": true,
@@ -61,7 +61,7 @@
     "requirePaddingNewLinesBeforeLineComments": {
         "allExcept": "firstAfterCurly"
     },
-    "requirePaddingNewLinesAfterBlocks": true,
+    // "requirePaddingNewLinesAfterBlocks": true,
     "safeContextKeyword": "_this",
     "validateLineBreaks": "LF",
     "validateQuoteMarks": "'",
@@ -69,8 +69,14 @@
 
     // added rules
 
+    "disallowSemicolons": true,
+    "requireTrailingComma": {
+      "ignoreSingleLine": true
+    },
+
     "excludeFiles": [
       "node_modules/**",
-      "dist/js/bundle.js"
+      "dist/js/bundle.js",
+      "coverage/**"
     ]
 }

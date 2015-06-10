@@ -2,20 +2,33 @@
 <html>
   <head>
     <title>todos</title>
-    <link href='http://fonts.googleapis.com/css?family=Karla:700,400,400italic,700italic'
-          rel='stylesheet'>
+    <link rel="stylesheet" href="fonts/karla.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <form>
-      <div id="todo-input-element" class="input-element">
-        <div class="input-container">
-          <input type="text" id="todo-input-field" class="input-field"
-                 placeholder="What would you like to do?"
-                 autocomplete="off">
-        </div>
-     </div>
-    </form>
+    <div id="header"></div>
+    <div id="main"></div>
+
+    <script type="text/html" id="todo-input-template">
+        <div id="todo-input-element" class="input-element">
+          <div class="input-container">
+            <input type="text" id="new-todo" class="input-field"
+                   placeholder="What would you like to do?"
+                   autocomplete="off">
+          </div>
+       </div>
+    </script>
+
+    <script type="text/html" id="todo-list-template">
+      <div class="todo-list-container">
+        <ul id="todo-list"></ul>
+      </div>
+    </script>
+
+    <script type="text/html" id="todo-item-template">
+      <span><%= title %></span>
+    </script>
+
     <script src="js/bundle.js"></script>
   </body>
 </html>
