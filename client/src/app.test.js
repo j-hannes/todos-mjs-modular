@@ -1,10 +1,3 @@
-require('../setup/test')
-require('../setup/dom')
-require('../setup/plugins')
-
-var Marionette = require('backbone.marionette')
-var radio = require('backbone.radio')
-
 var sinon = require('sinon')
 
 var Application = require('./app')

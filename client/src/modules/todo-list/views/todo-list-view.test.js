@@ -1,12 +1,5 @@
 'use strict'
 
-require('../../../../setup/test')
-require('../../../../setup/dom')
-require('../../../../setup/plugins')
-
-var $ = require('jquery')
-var Marionette = require('backbone.marionette')
-
 var expect = require('chai').expect
 
 var App = require('../../../app')

@@ -1,15 +1,10 @@
 'use strict'
 
-require('../../../setup/dom')
-require('../../../setup/test')
-require('../../../setup/plugins')
-
 var NotifierModule = require('./')
 var Module = require('../../common/module')
 
-var Backbone = require('backbone')
 var sinon = require('sinon')
-var dataChannel = require('backbone.radio').channel('data')
+var dataChannel = radio.channel('data')
 
 describe('Notifier :: Module', function() {
 

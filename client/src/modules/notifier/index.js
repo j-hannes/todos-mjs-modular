@@ -1,7 +1,7 @@
 'use strict'
 
 // channels
-var dataChannel = require('backbone.radio').channel('data')
+var dataChannel = radio.channel('data')
 
 // components
 var Module = require('../../common/module')

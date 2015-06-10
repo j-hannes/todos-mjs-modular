@@ -1,7 +1,5 @@
 'use strict'
 
-var radio = require('backbone.radio')
-
 // components
 var Module = require('../../common/module')
 var TodoListView = require('./views/todo-list-view')

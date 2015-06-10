@@ -69,5 +69,13 @@
   "asi": true,
 
   // Allow "this" in named functions.
-  "validthis": true
+  "validthis": true,
+
+  "globals": {
+    "$": true,
+    "_": true,
+    "Backbone": true,
+    "Marionette": true,
+    "radio": true
+  }
 }

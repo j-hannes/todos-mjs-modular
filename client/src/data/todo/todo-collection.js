@@ -1,9 +1,8 @@
 'use strict'
 
-var Backbone = require('backbone')
 var TodoModel = require('./todo-model')
 
-var dataChannel = require('backbone.radio').channel('data')
+var dataChannel = radio.channel('data')
 
 
 // ####################

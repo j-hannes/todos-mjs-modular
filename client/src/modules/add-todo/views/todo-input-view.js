@@ -1,10 +1,7 @@
 'use strict'
 
-// libraries
-var Marionette = require('backbone.marionette')
-
 // channels
-var dataChannel = require('backbone.radio').channel('data')
+var dataChannel = radio.channel('data')
 
 
 // ####################

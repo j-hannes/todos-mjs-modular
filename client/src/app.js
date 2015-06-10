@@ -1,9 +1,5 @@
 'use strict'
 
-// libraries
-var Marionette = require('backbone.marionette')
-var radio = require('backbone.radio')
-
 var f = require('../libs/functools')
 
 // data components

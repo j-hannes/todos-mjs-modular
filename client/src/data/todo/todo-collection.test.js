@@ -1,13 +1,9 @@
 'use strict'
 
-require('../../../setup/test')
-
-var Backbone = require('backbone')
-
 var TodoCollection = require('./todo-collection')
 var TodoModel = require('./todo-model')
 
-var dataChannel = require('backbone.radio').channel('data')
+var dataChannel = radio.channel('data')
 
 describe('TodoCollection :: Collection', function() {
 

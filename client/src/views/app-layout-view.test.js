@@ -2,17 +2,9 @@
 
 // imports and setup
 
-require('../../setup/test')
-require('../../setup/dom')
-require('../../setup/plugins')
-
-var $ = require('jquery')
-var _ = require('lodash')
-var Backbone = require('backbone')
-
 var AppLayoutView = require('./app-layout-view')
 
-var layoutChannel = require('backbone.radio').channel('layout')
+var layoutChannel = radio.channel('layout')
 
 // helpers
 
