@@ -98,7 +98,7 @@ gulp.task('browserify', function() {
 })
 
 gulp.task('TDD', function() {
-  gulp.watch(['client/**'], ['test'])
+  gulp.watch(['client/*.js'], ['test'])
   gulp.run('test')
 })
 
