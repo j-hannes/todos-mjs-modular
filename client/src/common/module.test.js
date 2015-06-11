@@ -1,10 +1,8 @@
 'use strict'
 
-require('../../setup/test')
-require('../../setup/plugins')
-
 var Module = require('./module')
-var appChannel = require('backbone.radio').channel('app')
+
+var appChannel = radio.channel('app')
 
 describe('Module :: Marionette.Object', function() {
   afterEach(function() {

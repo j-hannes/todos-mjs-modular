@@ -1,8 +1,5 @@
 'use strict'
 
-var $ = require('jquery')
-var Marionette = require('backbone.marionette')
-
 var TodoItemView = require('./todo-item-view')
 
 var compose = require('ramda').compose

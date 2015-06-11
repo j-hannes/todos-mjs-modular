@@ -1,15 +1,6 @@
 'use strict'
 
-// libraries
-var Marionette = require('backbone.marionette')
-
-// channels
-var appChannel = require('backbone.radio').channel('app')
-
-
-// ##############
-// ### public ###
-// ##############
+var appChannel = radio.channel('app')
 
 module.exports = Marionette.Object.extend({
   register: function() {

@@ -1,16 +1,9 @@
 'use strict'
 
-// components
 var TodoInputView = require('./views/todo-input-view')
 var Module = require('../../common/module')
 
-// channels
-var layoutChannel = require('backbone.radio').channel('layout')
-
-
-// ###########
-// ### API ###
-// ###########
+var layoutChannel = radio.channel('layout')
 
 module.exports = Module.extend({
 

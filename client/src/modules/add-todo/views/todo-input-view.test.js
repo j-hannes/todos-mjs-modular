@@ -1,17 +1,9 @@
 'use strict'
 
-require('../../../../setup/test')
-require('../../../../setup/dom')
-require('../../../../setup/plugins')
-
-var $ = require('jquery')
-var Marionette = require('backbone.marionette')
-
 var TodoInputView = require('./todo-input-view')
-
-var dataChannel = require('backbone.radio').channel('data')
-
 var compose = require('ramda').compose
+
+var dataChannel = radio.channel('data')
 
 var createTodoInputTemplate = function(params) {
   return $('<script>')

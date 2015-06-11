@@ -1,16 +1,11 @@
 'use strict'
 
-require('../../../setup/dom')
-require('../../../setup/test')
-require('../../../setup/plugins')
-
 var sinon = require('sinon')
-
 var AddTodoModule = require('./')
 var Module = require('../../common/module')
 var TodoInputView = require('./views/todo-input-view')
 
-var layoutChannel = require('backbone.radio').channel('layout')
+var layoutChannel = radio.channel('layout')
 
 describe('AddTodo :: Module', function() {
 

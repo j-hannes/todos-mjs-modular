@@ -1,17 +1,12 @@
 'use strict'
 
-require('../../../setup/test')
-require('../../../setup/dom')
-require('../../../setup/plugins')
-
 var sinon = require('sinon')
-
-var App            = require('../../app')
-var Module         = require('../../common/module')
+var App = require('../../app')
+var Module = require('../../common/module')
 var TodoListModule = require('./')
-var TodoListView   = require('./views/todo-list-view')
+var TodoListView = require('./views/todo-list-view')
 
-var layoutChannel = require('backbone.radio').channel('layout')
+var layoutChannel = radio.channel('layout')
 
 describe('TodoList :: Module', function() {
 

@@ -1,15 +1,6 @@
 'use strict'
 
-// libraries
-var Marionette = require('backbone.marionette')
-
-// channels
-var dataChannel = require('backbone.radio').channel('data')
-
-
-// ####################
-// ### private area ###
-// ####################
+var dataChannel = radio.channel('data')
 
 var $todoInputField
 
@@ -35,11 +26,6 @@ var emptyTodoInputField = function() {
 var registerRadioListeners = function() {
   dataChannel.on('todo:created', emptyTodoInputField)
 }
-
-
-// ###########
-// ### API ###
-// ###########
 
 module.exports = Marionette.ItemView.extend({
 

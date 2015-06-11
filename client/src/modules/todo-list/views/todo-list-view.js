@@ -1,8 +1,5 @@
 'use strict'
 
-var Marionette = require('backbone.marionette')
-var radio = require('backbone.radio')
-
 var TodoItemView = require('./todo-item-view')
 
 var dataChannel = radio.channel('data')

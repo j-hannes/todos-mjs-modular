@@ -1,25 +1,11 @@
 'use strict'
 
-// libraries
-var Marionette = require('backbone.marionette')
-var radio = require('backbone.radio')
-
 var f = require('../libs/functools')
-
-// data components
 var TodoCollection = require('./data/todo/todo-collection')
-
-// view components
 var AppLayoutView = require('./views/app-layout-view')
 
-// channels
 var appChannel = radio.channel('app')
 var dataChannel = radio.channel('data')
-
-
-// ###############
-// ### private ###
-// ###############
 
 var modules = {}
 
@@ -52,11 +38,6 @@ var DestroyableApplication = Marionette.Application.extend({
     }
   },
 })
-
-
-// ##############
-// ### public ###
-// ##############
 
 module.exports = DestroyableApplication.extend({
 

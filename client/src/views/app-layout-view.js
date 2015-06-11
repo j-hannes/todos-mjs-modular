@@ -1,8 +1,6 @@
 'use strict'
 
-var Marionette = require('backbone.marionette')
-
-var layoutChannel = require('backbone.radio').channel('layout')
+var layoutChannel = radio.channel('layout')
 
 var showViewInHeader = function(view) {
   this.header.show(view)
