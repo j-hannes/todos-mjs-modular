@@ -1,6 +1,7 @@
 'use strict'
 
 var Module = require('./module')
+
 var appChannel = radio.channel('app')
 
 describe('Module :: Marionette.Object', function() {

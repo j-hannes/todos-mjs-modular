@@ -1,7 +1,6 @@
 'use strict'
 
 var sinon = require('sinon')
-
 var AddTodoModule = require('./')
 var Module = require('../../common/module')
 var TodoInputView = require('./views/todo-input-view')

@@ -1,12 +1,8 @@
 'use strict'
 
-// imports and setup
-
 var AppLayoutView = require('./app-layout-view')
 
 var layoutChannel = radio.channel('layout')
-
-// helpers
 
 var GenericView = Backbone.View.extend({
   render: function() {
@@ -14,8 +10,6 @@ var GenericView = Backbone.View.extend({
     return this
   },
 })
-
-// local API
 
 var bodyAppendDiv = function(options) {
   $('body').append('<div id="' + options.id + '"></div>')
@@ -30,8 +24,6 @@ function createGenericView(options) {
 function cleanBodyContent() {
   $('body').empty()
 }
-
-// test suite
 
 describe('AppLayoutView :: Marionette.LayoutView', function() {
 

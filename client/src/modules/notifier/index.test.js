@@ -1,9 +1,9 @@
 'use strict'
 
+var sinon = require('sinon')
 var NotifierModule = require('./')
 var Module = require('../../common/module')
 
-var sinon = require('sinon')
 var dataChannel = radio.channel('data')
 
 describe('Notifier :: Module', function() {

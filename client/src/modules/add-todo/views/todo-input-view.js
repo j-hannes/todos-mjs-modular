@@ -1,12 +1,6 @@
 'use strict'
 
-// channels
 var dataChannel = radio.channel('data')
-
-
-// ####################
-// ### private area ###
-// ####################
 
 var $todoInputField
 
@@ -32,11 +26,6 @@ var emptyTodoInputField = function() {
 var registerRadioListeners = function() {
   dataChannel.on('todo:created', emptyTodoInputField)
 }
-
-
-// ###########
-// ### API ###
-// ###########
 
 module.exports = Marionette.ItemView.extend({
 

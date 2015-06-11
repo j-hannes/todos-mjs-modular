@@ -1,11 +1,10 @@
 'use strict'
 
 var sinon = require('sinon')
-
-var App            = require('../../app')
-var Module         = require('../../common/module')
+var App = require('../../app')
+var Module = require('../../common/module')
 var TodoListModule = require('./')
-var TodoListView   = require('./views/todo-list-view')
+var TodoListView = require('./views/todo-list-view')
 
 var layoutChannel = radio.channel('layout')
 

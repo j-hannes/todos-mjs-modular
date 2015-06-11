@@ -1,16 +1,9 @@
 'use strict'
 
-// components
 var TodoInputView = require('./views/todo-input-view')
 var Module = require('../../common/module')
 
-// channels
 var layoutChannel = radio.channel('layout')
-
-
-// ###########
-// ### API ###
-// ###########
 
 module.exports = Module.extend({
 

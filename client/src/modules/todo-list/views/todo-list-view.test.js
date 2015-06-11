@@ -1,13 +1,12 @@
 'use strict'
 
 var expect = require('chai').expect
+var compose = require('ramda').compose
 
 var App = require('../../../app')
 var TodoListView = require('./todo-list-view')
 var TodoItemView = require('./todo-item-view')
 var TodoCollection = require('../../../data/todo/todo-collection')
-
-var compose = require('ramda').compose
 
 var createTodoListTemplate = function(params) {
   return $('<script>')

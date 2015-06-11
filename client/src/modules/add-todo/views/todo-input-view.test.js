@@ -1,10 +1,9 @@
 'use strict'
 
 var TodoInputView = require('./todo-input-view')
+var compose = require('ramda').compose
 
 var dataChannel = radio.channel('data')
-
-var compose = require('ramda').compose
 
 var createTodoInputTemplate = function(params) {
   return $('<script>')
