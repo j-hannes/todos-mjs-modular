@@ -1,3 +1,5 @@
+/* we use normalize.css, see gulpfile css task */
+
 html {
   height: 100%;
   font-family: 'Karla';
