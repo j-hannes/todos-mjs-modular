@@ -1,11 +1,8 @@
 'use strict'
 
-var sinon = require('sinon')
 var AddTodoModule = require('./')
-var Module = require('../../common/module')
+var ViewModule    = require('../../common/view-module')
 var TodoInputView = require('./views/todo-input-view')
-
-var layoutChannel = radio.channel('layout')
 
 describe('AddTodo :: Module', function() {
 
@@ -19,62 +16,22 @@ describe('AddTodo :: Module', function() {
     addTodoModule.destroy()
   })
 
-  it('should be a Module', function() {
-    addTodoModule.should.be.an.instanceOf(Module)
+  it('should be a ViewModule', function() {
+    addTodoModule.should.be.an.instanceOf(ViewModule)
   })
 
-  it('should have a name', function() {
+  it('should have name "add-todo"', function() {
     addTodoModule.should.have.property('name')
+    addTodoModule.name.should.be.equal('add-todo')
   })
 
-  it('should send a show:header command with a TodoInputView instance on start',
-     function(done) {
-    function testTodoInputViewInstance(view) {
-      view.should.be.an.instanceOf(TodoInputView)
-      layoutChannel.stopComplying('show:header', testTodoInputViewInstance)
-      done()
-    }
-
-    layoutChannel.comply('show:header', testTodoInputViewInstance)
-
-    addTodoModule.start()
+  it('should have viewClass TodoInputView', function() {
+    addTodoModule.should.have.property('viewClass')
+    addTodoModule.viewClass.should.be.equal(TodoInputView)
   })
 
-  it('should have autostart set to true', function() {
-    addTodoModule.should.have.property('autostart')
-    addTodoModule.autostart.should.be.true
-  })
-
-  it('should create a todoInputView member variable on start', function() {
-    // prepare
-    var fakeHandler = function() {}
-    layoutChannel.comply('show:header', fakeHandler)
-
-    // invoke
-    addTodoModule.start()
-
-    // check
-    addTodoModule.should.have.property('todoInputView')
-
-    // clean up
-    layoutChannel.stopComplying('show:header', fakeHandler)
-  })
-
-  it('should destroy its view when destroyed', function() {
-    // prepare
-    var fakeHandler = function() {}
-    layoutChannel.comply('show:header', fakeHandler)
-    addTodoModule.start()
-    var spy = sinon.spy(addTodoModule.todoInputView, 'destroy')
-
-    // invoke
-    addTodoModule.destroy()
-
-    // check
-    spy.should.have.been.called
-
-    // clean up
-    addTodoModule = new AddTodoModule()
-    layoutChannel.stopComplying('show:header', fakeHandler)
+  it('should have region "header"', function() {
+    addTodoModule.should.have.property('region')
+    addTodoModule.region.should.be.equal('header')
   })
 })
