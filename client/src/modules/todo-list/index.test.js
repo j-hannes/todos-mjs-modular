@@ -4,7 +4,7 @@ var TodoListModule = require('./')
 var TodoListView   = require('./views/todo-list-view')
 var ViewModule     = require('../../common/module/view-module')
 
-describe('TodoList :: Module', function() {
+describe('TodoList', function() {
 
   var todoListModule
 

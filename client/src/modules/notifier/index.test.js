@@ -6,7 +6,7 @@ var Module = require('../../common/module/module')
 
 var dataChannel = radio.channel('data')
 
-describe('Notifier :: Module', function() {
+describe('Notifier', function() {
 
   var notifierModule
 

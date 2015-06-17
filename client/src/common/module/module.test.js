@@ -4,7 +4,7 @@ var Module = require('./module')
 
 var appChannel = radio.channel('app')
 
-describe('Module :: Marionette.Object', function() {
+describe('Module', function() {
   afterEach(function() {
     appChannel.stopComplying()
   })

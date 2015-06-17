@@ -5,7 +5,7 @@ var TodoModel = require('./todo-model')
 
 var dataChannel = radio.channel('data')
 
-describe('TodoCollection :: Collection', function() {
+describe('TodoCollection', function() {
 
   var collection
 

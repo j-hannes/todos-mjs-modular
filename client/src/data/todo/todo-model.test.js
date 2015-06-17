@@ -2,7 +2,7 @@
 
 var TodoModel = require('./todo-model')
 
-describe('TodoModel :: Model', function() {
+describe('TodoModel', function() {
 
   var model
 

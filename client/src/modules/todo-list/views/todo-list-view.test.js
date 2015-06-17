@@ -23,7 +23,7 @@ var cleanBodyContent = function() {
   $('body').empty()
 }
 
-describe('TodoListView :: Marionette.CompositeView', function() {
+describe('TodoListView', function() {
 
   var todoListView
   var app

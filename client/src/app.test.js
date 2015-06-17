@@ -7,7 +7,7 @@ var TodoCollection = require('./data/todo/todo-collection')
 var appChannel = radio.channel('app')
 var dataChannel = radio.channel('data')
 
-describe('App :: Marionette.Application', function() {
+describe('App', function() {
   'use strict'
 
   var app

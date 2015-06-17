@@ -4,7 +4,7 @@ var AddTodoModule = require('./')
 var ViewModule    = require('../../common/module/view-module')
 var TodoInputView = require('./views/todo-input-view')
 
-describe('AddTodo :: Module', function() {
+describe('AddTodo', function() {
 
   var addTodoModule
 

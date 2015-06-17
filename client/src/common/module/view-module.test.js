@@ -6,7 +6,7 @@ var ViewModule = require('./view-module')
 
 var layoutChannel = radio.channel('layout')
 
-describe('View :: Module', function() {
+describe('View', function() {
 
   var viewModule
 

@@ -1,6 +1,6 @@
 var f = require('./functools')
 
-describe('FuncTools :: Lib', function() {
+describe('FuncTools', function() {
   'use strict'
 
   describe('words :: String -> [String]', function() {
