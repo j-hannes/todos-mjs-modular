@@ -25,7 +25,7 @@ function cleanBodyContent() {
   $('body').empty()
 }
 
-describe('AppLayoutView :: Marionette.LayoutView', function() {
+describe('AppLayoutView', function() {
 
   var layoutView
 

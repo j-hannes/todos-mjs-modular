@@ -20,7 +20,7 @@ var cleanBodyContent = function() {
   $('body').empty()
 }
 
-describe('TodoInputView :: Marionette.ItemView', function() {
+describe('TodoInputView', function() {
 
   var view
 

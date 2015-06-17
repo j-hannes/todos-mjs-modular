@@ -19,7 +19,7 @@ var cleanBodyContent = function() {
   $('body').empty()
 }
 
-describe('TodoItemView :: Marionette.ItemView', function() {
+describe('TodoItemView', function() {
 
   var todoItemView
 
