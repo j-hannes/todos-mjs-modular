@@ -10,19 +10,12 @@ describe('Notifier', function() {
 
   var notifierModule
 
-  var consolelog
-
   beforeEach(function() {
     notifierModule = new NotifierModule()
-
-    // replace console.log with dummy to suppress output
-    consolelog = console.log
-    console.log = function() {}
   })
 
   afterEach(function() {
     notifierModule.destroy()
-    console.log = consolelog
   })
 
   it('should be a Module', function() {
@@ -43,9 +36,14 @@ describe('Notifier', function() {
     var spy = sinon.spy(notifierModule, 'logTodos')
     var model = new Backbone.Model({father: 'Anakin'})
     notifierModule.start()
+    var consolelog = console.log
+    console.log = function() {}
 
     // invoke
     dataChannel.trigger('todo:created', model)
+
+    // clean up
+    console.log = consolelog
 
     // check
     spy.should.have.been.calledWith(model)
