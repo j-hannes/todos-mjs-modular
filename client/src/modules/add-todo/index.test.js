@@ -1,7 +1,7 @@
 'use strict'
 
 var AddTodoModule = require('./')
-var ViewModule    = require('../../common/view-module')
+var ViewModule    = require('../../common/module/view-module')
 var TodoInputView = require('./views/todo-input-view')
 
 describe('AddTodo :: Module', function() {

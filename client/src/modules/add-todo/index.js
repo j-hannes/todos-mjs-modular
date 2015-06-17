@@ -1,6 +1,6 @@
 'use strict'
 
-var ViewModule    = require('../../common/view-module')
+var ViewModule    = require('../../common/module/view-module')
 var TodoInputView = require('./views/todo-input-view')
 
 module.exports = ViewModule.extend({

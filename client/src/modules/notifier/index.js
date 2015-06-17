@@ -1,6 +1,6 @@
 'use strict'
 
-var Module = require('../../common/module')
+var Module = require('../../common/module/module')
 
 var dataChannel = radio.channel('data')
 

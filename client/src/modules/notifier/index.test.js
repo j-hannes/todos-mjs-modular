@@ -2,7 +2,7 @@
 
 var sinon = require('sinon')
 var NotifierModule = require('./')
-var Module = require('../../common/module')
+var Module = require('../../common/module/module')
 
 var dataChannel = radio.channel('data')
 
